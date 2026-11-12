@@ -1,0 +1,36 @@
+{
+  "clinica": {"nome": "Clínica Exemplo Derma", "cidade": "Campinas", "bairro": "Cambuí",
+              "subnicho": "dermatologia", "decisor_nome": "Dra. Mariana", "decisor_trecho": "Dra. Mariana Souza, diretora"},
+  "google": {
+    "nota": 4.1, "total_avaliacoes": 87, "nota_trecho": "4,1 ★★★★☆ (87 avaliações)",
+    "telefone": "(19) 3200-0000", "telefone_e_fixo": true,
+    "tem_link_whatsapp": false, "tem_link_agendamento": false,
+    "site": "clinicaexemploderma.com.br",
+    "horario": {"fecha_dias_uteis": "18:00", "sabado": "fechado", "domingo": "fechado",
+                "trecho": "sexta-feira 08:00–18:00\nsábado Fechado"}
+  },
+  "avaliacoes": [
+    {"id": "A1", "quando": "há 3 semanas", "estrelas": 1, "tags": ["demora_resposta"],
+     "trecho": "tentei marcar retorno pelo WhatsApp e demoraram 2 dias pra responder", "tem_resposta_proprietario": false},
+    {"id": "A2", "quando": "há 2 meses", "estrelas": 2, "tags": ["demora_resposta", "atendimento_recepcao"],
+     "trecho": "Ninguém atende o telefone e no WhatsApp só visualizam", "tem_resposta_proprietario": false},
+    {"id": "A3", "quando": "há 2 meses", "estrelas": 5, "tags": ["elogio"],
+     "trecho": "Atendimento excelente da doutora", "tem_resposta_proprietario": false},
+    {"id": "A4", "quando": "há 4 meses", "estrelas": 4, "tags": ["dificuldade_agendar"],
+     "trecho": "achei difícil conseguir horário", "tem_resposta_proprietario": true},
+    {"id": "A5", "quando": "há 5 meses", "estrelas": 5, "tags": ["elogio"],
+     "trecho": "Equipe muito atenciosa.", "tem_resposta_proprietario": false},
+    {"id": "A6", "quando": "há 1 ano", "estrelas": 3, "tags": ["faltas_remarcacao"],
+     "trecho": "Remarcaram minha consulta duas vezes sem avisar", "tem_resposta_proprietario": false},
+    {"id": "A7", "quando": "há 1 mês", "estrelas": 1, "tags": ["demora_resposta"],
+     "trecho": "Esperei uma semana por retorno da recepção e ninguém respondeu", "tem_resposta_proprietario": false}
+  ],
+  "site": {"coletado": true, "tem_agendamento_online": false, "tem_botao_whatsapp": false,
+           "trecho": "Agende sua avaliação pelo telefone (19) 3200-0000"},
+  "pagespeed": {"coletado": true, "score_mobile": 38, "lcp_segundos": 6.8},
+  "instagram": {"coletado": true, "perfil": "@clinicaexemploderma", "data_ultimo_post": "12 de agosto de 2026",
+                "dias_desde_ultimo_post": 89, "trecho": "último post em 12 de agosto de 2026 (89 dias atrás)"},
+  "anuncios": {"coletado": true, "ativos": 2, "destino_whatsapp": true, "procedimento": "peeling e limpeza de pele",
+               "trecho": "2 anúncios ativos de \"peeling e limpeza de pele\""},
+  "doctoralia": {"coletado": false, "tem_agenda_online": null, "trecho": null}
+}

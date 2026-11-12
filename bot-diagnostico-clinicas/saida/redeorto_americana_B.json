@@ -1,0 +1,232 @@
+{
+  "lead": {
+    "clinica": "Redeorto Americana",
+    "cidade": "Americana",
+    "origem_contato": "ficha do Google",
+    "decisor": "",
+    "link_maps": "https://maps.app.goo.gl/mfvGCoEDRDp46jx1A",
+    "coletado_em": "2026-11-08 22:30 (domingo à noite)"
+  },
+  "arquivo": "redeorto_americana.txt",
+  "avisos_extracao": [],
+  "fatos": {
+    "clinica": {
+      "nome": "Redeorto Americana",
+      "cidade": "Americana",
+      "bairro": "Vila Pavan",
+      "subnicho": "odontologia",
+      "decisor_nome": "Dra. Érica Vanzo",
+      "decisor_trecho": "R.T.: Dra. Érica Vanzo",
+      "franquia": true,
+      "franquia_trecho": "Redeorto é uma rede de franquias odontológicas"
+    },
+    "google": {
+      "nota": 5.0,
+      "total_avaliacoes": 167,
+      "nota_trecho": "5.0\n(167)",
+      "telefone": "(19) 3461-2172",
+      "telefone_e_fixo": true,
+      "tem_link_whatsapp": true,
+      "tem_link_agendamento": false,
+      "site": null,
+      "horario": {
+        "fecha_dias_uteis": "18:00",
+        "sabado": "manha",
+        "domingo": "fechado",
+        "trecho": "Friday 8:30 AM–6 PM\nSaturday 8:30 AM–1 PM"
+      }
+    },
+    "avaliacoes": [
+      {
+        "id": "A1",
+        "quando": "2 weeks ago",
+        "estrelas": 5,
+        "tags": [
+          "elogio"
+        ],
+        "trecho": "5 stars · 2 weeks ago · (sem texto)",
+        "tem_resposta_proprietario": true,
+        "idade_meses": 0.46511627906976744
+      },
+      {
+        "id": "A2",
+        "quando": "a month ago",
+        "estrelas": 5,
+        "tags": [
+          "outro"
+        ],
+        "trecho": "Faz tempo que somos clientes do cartão de Todos",
+        "tem_resposta_proprietario": true,
+        "idade_meses": 1
+      },
+      {
+        "id": "A3",
+        "quando": "6 months ago",
+        "estrelas": 5,
+        "tags": [
+          "elogio"
+        ],
+        "trecho": "fui muito bem atendida na recepção pela Jéssica",
+        "tem_resposta_proprietario": true,
+        "idade_meses": 6
+      },
+      {
+        "id": "A4",
+        "quando": "6 months ago",
+        "estrelas": 5,
+        "tags": [
+          "elogio"
+        ],
+        "trecho": "Atendimento maravilhoso, respeito, carinho",
+        "tem_resposta_proprietario": true,
+        "idade_meses": 6
+      },
+      {
+        "id": "A5",
+        "quando": "6 months ago",
+        "estrelas": 5,
+        "tags": [
+          "elogio"
+        ],
+        "trecho": "Desde da recepção ate chegar ao dentista o atendimento foi muito bom",
+        "tem_resposta_proprietario": true,
+        "idade_meses": 6
+      },
+      {
+        "id": "A6",
+        "quando": "a year ago",
+        "estrelas": 5,
+        "tags": [
+          "elogio"
+        ],
+        "trecho": "sempre muito educada e pró ativa nos atendimentos online",
+        "tem_resposta_proprietario": true,
+        "idade_meses": 12
+      },
+      {
+        "id": "A10",
+        "quando": "a year ago",
+        "estrelas": 5,
+        "tags": [
+          "elogio"
+        ],
+        "trecho": "já agendei resposta muito rápida",
+        "tem_resposta_proprietario": true,
+        "idade_meses": 12
+      }
+    ],
+    "site": {
+      "coletado": false,
+      "tem_agendamento_online": null,
+      "tem_botao_whatsapp": null,
+      "trecho": null
+    },
+    "pagespeed": {
+      "coletado": false,
+      "score_mobile": null,
+      "lcp_segundos": null
+    },
+    "instagram": {
+      "coletado": true,
+      "perfil": "@redeortoamericana",
+      "data_ultimo_post": "4 days ago",
+      "dias_desde_ultimo_post": 4,
+      "trecho": "4 days ago"
+    },
+    "anuncios": {
+      "coletado": false,
+      "ativos": null,
+      "destino_whatsapp": null,
+      "procedimento": null,
+      "trecho": null
+    },
+    "doctoralia": {
+      "coletado": false,
+      "tem_agenda_online": null,
+      "trecho": null
+    }
+  },
+  "teste_whatsapp": null,
+  "candidatos": [
+    {
+      "id": "C03",
+      "nome": "Sem atendimento fora do horário",
+      "score": 4.0,
+      "confianca": "alta"
+    },
+    {
+      "id": "C12",
+      "nome": "Número em destaque é fixo e o WhatsApp fica escondido",
+      "score": 3.0,
+      "confianca": "alta"
+    },
+    {
+      "id": "C08",
+      "nome": "Ficha do Google não aponta para um site",
+      "score": 1.44,
+      "confianca": "media"
+    }
+  ],
+  "problema_escolhido": "C03",
+  "pontos_diagnostico": [
+    "C03",
+    "C08",
+    "C12"
+  ],
+  "a_conferir": [
+    "Franquia: confira se a rede tem página da unidade antes de citar."
+  ],
+  "variante_ab": "B",
+  "mensagem": {
+    "balao_1": "Oi, Dra. Érica, tudo bem? Aqui é a Kethely, da KethyTech. Cuido de atendimento automático no WhatsApp para clínicas e achei o contato de vocês no Google.",
+    "balao_2": "Vi que o agendamento da ficha vai pro WhatsApp e vocês atendem até as 18h, sábado só de manhã. Quem chama à noite provavelmente só tem resposta no dia seguinte, e dá pra deixar o WhatsApp respondendo e agendando sozinho, inclusive à noite. Notei mais 2 pontos na ficha. Posso te mandar os 3 num resumo rápido? Se não for prioridade, é só me dizer."
+  },
+  "erros_mensagem": [],
+  "diagnostico": {
+    "abertura": "Oi, Dra. Érica! Segue o resumo, leva 1 minuto:",
+    "pontos": [
+      {
+        "id": "C03",
+        "titulo": "WhatsApp sem resposta fora do horário",
+        "o_que_vi": "Na ficha do Google, o botão de agendar leva pro WhatsApp, e vocês atendem até as 18h e sábado só até 13h.",
+        "por_que_importa": "Quem pesquisa implante à noite provavelmente chama várias clínicas e fecha com a que responde primeiro.",
+        "estudo_id": "E1",
+        "estudo": "Uma auditoria da Harvard Business Review com 2.241 empresas mostrou que quem responde o contato em até 1 hora tem cerca de 7 vezes mais chance de conseguir conversar de verdade com o cliente do que quem demora mais.",
+        "como_resolvo": "Um agente de atendimento com IA responde na hora, tira as dúvidas e deixa a avaliação pré-agendada pra Jéssica confirmar de manhã."
+      },
+      {
+        "id": "C08",
+        "titulo": "Ficha do Google sem site",
+        "o_que_vi": "A ficha do Google não leva para nenhum site.",
+        "por_que_importa": "Em tratamento mais caro, o paciente costuma querer ver equipe, casos e como funciona antes de chamar.",
+        "estudo_id": null,
+        "estudo": null,
+        "como_resolvo": "Uma página simples da unidade, com a equipe, os tratamentos e um botão que abre o WhatsApp já com a mensagem pronta."
+      },
+      {
+        "id": "C12",
+        "titulo": "O número em destaque é o fixo",
+        "o_que_vi": "O telefone que aparece em destaque na ficha é o fixo, e o WhatsApp fica só no botão de agendar.",
+        "por_que_importa": "Quem toca no número pelo celular cai numa ligação, e depois do horário ninguém atende.",
+        "estudo_id": "E2",
+        "estudo": "E isso pesa: segundo a pesquisa WhatsApp no Brasil da Opinion Box (2025), 62% dos brasileiros já desistiram de uma compra pelo WhatsApp depois de uma experiência ruim.",
+        "como_resolvo": "Deixar o WhatsApp como porta principal da ficha, com resposta automática fora do horário."
+      }
+    ],
+    "fechamento": "Se fizer sentido, te mostro funcionando com o nome da Redeorto em 15 minutos. Pode ser [HORARIO_1] ou [HORARIO_2]?"
+  },
+  "erros_diagnostico": [],
+  "diagnostico_whatsapp": "Oi, Dra. Érica! Segue o resumo, leva 1 minuto:\n\n*1. WhatsApp sem resposta fora do horário*\nNa ficha do Google, o botão de agendar leva pro WhatsApp, e vocês atendem até as 18h e sábado só até 13h. Quem pesquisa implante à noite provavelmente chama várias clínicas e fecha com a que responde primeiro. Uma auditoria da Harvard Business Review com 2.241 empresas mostrou que quem responde o contato em até 1 hora tem cerca de 7 vezes mais chance de conseguir conversar de verdade com o cliente do que quem demora mais.\n_Como resolvo:_ Um agente de atendimento com IA responde na hora, tira as dúvidas e deixa a avaliação pré-agendada pra Jéssica confirmar de manhã.\n\n*2. Ficha do Google sem site*\nA ficha do Google não leva para nenhum site. Em tratamento mais caro, o paciente costuma querer ver equipe, casos e como funciona antes de chamar.\n_Como resolvo:_ Uma página simples da unidade, com a equipe, os tratamentos e um botão que abre o WhatsApp já com a mensagem pronta.\n\n*3. O número em destaque é o fixo*\nO telefone que aparece em destaque na ficha é o fixo, e o WhatsApp fica só no botão de agendar. Quem toca no número pelo celular cai numa ligação, e depois do horário ninguém atende. E isso pesa: segundo a pesquisa WhatsApp no Brasil da Opinion Box (2025), 62% dos brasileiros já desistiram de uma compra pelo WhatsApp depois de uma experiência ruim.\n_Como resolvo:_ Deixar o WhatsApp como porta principal da ficha, com resposta automática fora do horário.\n\nSe fizer sentido, te mostro funcionando com o nome da Redeorto em 15 minutos. Pode ser [HORARIO_1] ou [HORARIO_2]?",
+  "followup": {
+    "follow_up": "Oi, Dra. Érica! Complementando: vi que o telefone em destaque na ficha do Google é o fixo, e o WhatsApp fica só no botão de agendar. Quem toca no número pelo celular cai numa ligação. Faz sentido eu te mandar os 3 pontos que notei?",
+    "encerramento": "Dra. Érica, não quero lotar seu WhatsApp, então vou parar por aqui. Obrigada pela atenção! Se um dia fizer sentido melhorar o atendimento fora do horário, é só me chamar."
+  },
+  "erros_followup": [],
+  "revisao": {
+    "aprovado": true,
+    "criterios": {},
+    "problemas": [],
+    "sugestao_de_ajuste": null
+  },
+  "status": "pronto_para_aprovar"
+}

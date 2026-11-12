@@ -1,0 +1,50 @@
+{
+  "nome": "Kethely",
+  "empresa": "KethyTech",
+  "cidade": "São Paulo",
+  "descricao_curta": "eu cuido de atendimento automático no WhatsApp para clínicas",
+  "saidas_faceis": [
+    "Se não for prioridade, é só me dizer.",
+    "Se não for o momento, sem problema.",
+    "Se não fizer sentido, me avisa que eu não insisto."
+  ],
+  "palavras_proibidas": [
+    "IA",
+    "inteligência artificial",
+    "robô",
+    "R$",
+    "executivo",
+    "incrível",
+    "parabéns",
+    "garanto",
+    "garantido",
+    "zerar",
+    "zeraram",
+    "100%",
+    "estudo",
+    "pesquisa mostra",
+    "Cornell",
+    "Baymard",
+    "reunião",
+    "call",
+    "agenda uma",
+    "prezado",
+    "prezada",
+    "certamente",
+    "espero que esteja bem",
+    "omnichannel",
+    "plataforma",
+    "solução",
+    "dica rápida",
+    "dica de ouro",
+    "mensagem de ausência",
+    "uma coisa simples que já ajuda"
+  ],
+  "limite_palavras_min": 35,
+  "limite_palavras_max": 75,
+  "descricao_por_area": {
+    "automacao": "cuido de atendimento automático no WhatsApp para clínicas",
+    "programacao": "faço sites e sistemas para clínicas",
+    "marketing": "cuido de marketing e reputação para clínicas"
+  }
+}

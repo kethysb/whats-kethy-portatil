@@ -1,0 +1,51 @@
+{
+  "aviso": "DADOS DE EXEMPLO (fictícios): servem só para ilustrar a tela. Os números reais vêm de medir em produção.",
+  "tierA": {
+    "leadsContatados": 40,
+    "respostas": 15,
+    "reunioes": 7,
+    "taxaResposta": "37.5%",
+    "taxaReuniao": "17.5%",
+    "tempoMedioLead": "18 min (Mystery Shopping + Auditoria)",
+    "proporcaoCarteira": "15% dos leads (Exceção / Alto Ticket)"
+  },
+  "tierB": {
+    "leadsContatados": 120,
+    "respostas": 26,
+    "reunioes": 9,
+    "taxaResposta": "21.7%",
+    "taxaReuniao": "7.5%",
+    "tempoMedioLead": "4 min (1 Fonte Pública Verificada)",
+    "proporcaoCarteira": "35% dos leads (Meio da Pirâmide)"
+  },
+  "tierC": {
+    "leadsContatados": 240,
+    "respostas": 24,
+    "reunioes": 7,
+    "taxaResposta": "10.0%",
+    "taxaReuniao": "2.9%",
+    "tempoMedioLead": "< 1 min (Sinal Único por Nicho)",
+    "proporcaoCarteira": "50% dos leads (Base da Pirâmide)"
+  },
+  "abTest": {
+    "armA_Pergunta": {
+      "nome": "Braço A: Pergunta ('Faz sentido?')",
+      "abordados": 200,
+      "respostasPositivas": 22,
+      "reunioesMarcadas": 9,
+      "reunioesRealizadas": 7,
+      "taxaReuniaoPorLead": "4.5%",
+      "bloqueiosOptOut": "2.5%"
+    },
+    "armB_Oferta": {
+      "nome": "Braço B: Oferta Concreta ('Posso te mandar o teste/print?')",
+      "abordados": 200,
+      "respostasPositivas": 34,
+      "reunioesMarcadas": 14,
+      "reunioesRealizadas": 12,
+      "taxaReuniaoPorLead": "7.0% (+55% reuniões)",
+      "bloqueiosOptOut": "1.5%"
+    }
+  },
+  "regraAlerta": "Tier A converte 2.33x a taxa de reuniões do Tier B (17.5% vs 7.5% — Meta >= 2x atingida ✅). Proporção da carteira ajustada para Pirâmide Realista (2 Tier A : 3 Tier B : 3 Tier C)."
+}

@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  whats-kethy:
+    build: .
+    container_name: whats-kethy
+    restart: always
+    ports:
+      - "3333:3333"
+    environment:
+      - PORT=3333
+    volumes:
+      - ./.data:/app/.data
+      - ./public/media:/app/public/media
+    env_file:
+      - .env

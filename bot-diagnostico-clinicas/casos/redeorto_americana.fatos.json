@@ -1,0 +1,28 @@
+{
+  "clinica": {"nome": "Redeorto Americana", "cidade": "Americana", "bairro": "Vila Pavan",
+              "subnicho": "odontologia", "decisor_nome": "Dra. Érica Vanzo", "decisor_trecho": "R.T.: Dra. Érica Vanzo",
+              "franquia": true, "franquia_trecho": "Redeorto é uma rede de franquias odontológicas"},
+  "google": {
+    "nota": 5.0, "total_avaliacoes": 167, "nota_trecho": "5.0\n(167)",
+    "telefone": "(19) 3461-2172", "telefone_e_fixo": true,
+    "tem_link_whatsapp": true, "tem_link_agendamento": false,
+    "site": null,
+    "horario": {"fecha_dias_uteis": "18:00", "sabado": "manha", "domingo": "fechado",
+                "trecho": "Friday 8:30 AM–6 PM\nSaturday 8:30 AM–1 PM"}
+  },
+  "avaliacoes": [
+    {"id": "A1", "quando": "2 weeks ago", "estrelas": 5, "tags": ["elogio"], "trecho": "5 stars · 2 weeks ago · (sem texto)", "tem_resposta_proprietario": true},
+    {"id": "A2", "quando": "a month ago", "estrelas": 5, "tags": ["outro"], "trecho": "Faz tempo que somos clientes do cartão de Todos", "tem_resposta_proprietario": true},
+    {"id": "A3", "quando": "6 months ago", "estrelas": 5, "tags": ["elogio"], "trecho": "fui muito bem atendida na recepção pela Jéssica", "tem_resposta_proprietario": true},
+    {"id": "A4", "quando": "6 months ago", "estrelas": 5, "tags": ["elogio"], "trecho": "Atendimento maravilhoso, respeito, carinho", "tem_resposta_proprietario": true},
+    {"id": "A5", "quando": "6 months ago", "estrelas": 5, "tags": ["elogio"], "trecho": "Desde da recepção ate chegar ao dentista o atendimento foi muito bom", "tem_resposta_proprietario": true},
+    {"id": "A6", "quando": "a year ago", "estrelas": 5, "tags": ["elogio"], "trecho": "sempre muito educada e pró ativa nos atendimentos online", "tem_resposta_proprietario": true},
+    {"id": "A10", "quando": "a year ago", "estrelas": 5, "tags": ["elogio"], "trecho": "já agendei resposta muito rápida", "tem_resposta_proprietario": true}
+  ],
+  "site": {"coletado": false, "tem_agendamento_online": null, "tem_botao_whatsapp": null, "trecho": null},
+  "pagespeed": {"coletado": false, "score_mobile": null, "lcp_segundos": null},
+  "instagram": {"coletado": true, "perfil": "@redeortoamericana", "data_ultimo_post": "4 days ago",
+                "dias_desde_ultimo_post": 4, "trecho": "4 days ago"},
+  "anuncios": {"coletado": false, "ativos": null, "destino_whatsapp": null, "procedimento": null, "trecho": null},
+  "doctoralia": {"coletado": false, "tem_agenda_online": null, "trecho": null}
+}

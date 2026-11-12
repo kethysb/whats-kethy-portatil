@@ -1,0 +1,211 @@
+{
+  "nicho": "clinicas",
+  "subnichos": [
+    "estetica",
+    "dermatologia",
+    "odontologia",
+    "clinica_medica"
+  ],
+  "pesos_servico": {
+    "automacao": 1.0,
+    "programacao": 0.8,
+    "marketing": 0.8
+  },
+  "pesos_confianca": {
+    "alta": 1.0,
+    "media": 0.6,
+    "baixa": 0.3
+  },
+  "score_minimo": 2.4,
+  "problemas": [
+    {
+      "id": "C01",
+      "nome": "Demora para responder no WhatsApp/telefone",
+      "servico": "automacao",
+      "impacto": 5,
+      "regra_resumo": "2+ avaliações dos últimos 6 meses com a tag demora_resposta (alta); 1 avaliação (media).",
+      "hipotese_base": "algumas avaliações recentes comentam demora para conseguir resposta",
+      "pergunta_base": "Isso ainda acontece ou já resolveram?",
+      "oferta_base": "te mandar em 2 linhas como outras clínicas resolveram isso",
+      "solucao_kethytech": {
+        "texto": "dá pra deixar o WhatsApp respondendo na hora, mesmo com a recepção ocupada",
+        "palavra_chave": "da pra"
+      }
+    },
+    {
+      "id": "C02",
+      "nome": "Dificuldade para agendar",
+      "servico": "automacao",
+      "impacto": 5,
+      "regra_resumo": "Avaliação recente com a tag dificuldade_agendar E sem agendamento online (site/Doctoralia/ficha).",
+      "hipotese_base": "tem paciente comentando dificuldade para conseguir marcar, e o agendamento hoje passa todo pela recepção",
+      "pergunta_base": "A agenda está concentrada na recepção mesmo?",
+      "oferta_base": "te mostrar como fica um agendamento que funciona sozinho pelo WhatsApp",
+      "solucao_kethytech": {
+        "texto": "dá pra deixar o paciente escolhendo o horário direto no WhatsApp, sem vai e volta",
+        "palavra_chave": "da pra"
+      }
+    },
+    {
+      "id": "C03",
+      "nome": "Sem atendimento fora do horário",
+      "servico": "automacao",
+      "impacto": 4,
+      "regra_resumo": "Fecha até 19h nos dias úteis E não abre sábado (ou só de manhã) E sem agendamento online. Confiança media (o horário é fato, o impacto é inferido).",
+      "hipotese_base": "quem chama no WhatsApp depois do horário provavelmente só recebe resposta no dia seguinte",
+      "pergunta_base": "Hoje alguém responde esses contatos da noite?",
+      "oferta_base": "te mandar em 2 linhas como deixar o WhatsApp respondendo e agendando à noite",
+      "solucao_kethytech": {
+        "texto": "dá pra deixar o WhatsApp respondendo e agendando sozinho, inclusive à noite",
+        "palavra_chave": "da pra"
+      }
+    },
+    {
+      "id": "C04",
+      "nome": "Avaliações sem resposta",
+      "servico": "marketing",
+      "impacto": 3,
+      "regra_resumo": "Das últimas 5+ avaliações, 20% ou menos têm resposta do proprietário (alta).",
+      "hipotese_base": "as avaliações mais recentes ficaram sem resposta, o que costuma indicar a equipe no limite",
+      "pergunta_base": "Hoje alguém fica responsável por isso aí?",
+      "oferta_base": "te mandar em 2 linhas como organizar isso sem tomar tempo da equipe",
+      "solucao_kethytech": {
+        "texto": "dá pra deixar as avaliações respondidas sem tomar tempo da equipe",
+        "palavra_chave": "da pra"
+      }
+    },
+    {
+      "id": "C05",
+      "nome": "Nota baixa no Google",
+      "servico": "marketing",
+      "impacto": 4,
+      "regra_resumo": "Nota abaixo de 4,3 com 20+ avaliações (alta). Use com tato: nunca diga 'nota baixa'.",
+      "hipotese_base": "boa parte das avaliações menores fala de atendimento, e não do procedimento em si",
+      "pergunta_base": "Faz sentido isso pra vocês?",
+      "oferta_base": "te mandar em 2 linhas o que mais aparece nessas avaliações",
+      "solucao_kethytech": {
+        "texto": "dá pra virar esse jogo com um processo simples de pedir avaliação a quem saiu satisfeito",
+        "palavra_chave": "da pra"
+      }
+    },
+    {
+      "id": "C06",
+      "nome": "Sem caminho direto para o WhatsApp",
+      "servico": "automacao",
+      "impacto": 3,
+      "regra_resumo": "Ficha sem link de WhatsApp/agendamento E site sem botão de WhatsApp (alta se ambos verificados).",
+      "hipotese_base": "quem acha a clínica pelo Google ou pelo site precisa ligar ou salvar o número para chamar",
+      "pergunta_base": "Hoje a maioria dos pacientes chega por ligação ou por WhatsApp?",
+      "oferta_base": "te mandar em 2 linhas como deixar isso a um toque",
+      "solucao_kethytech": {
+        "texto": "dá pra deixar o WhatsApp a um toque na ficha e no site, já respondendo na hora",
+        "palavra_chave": "da pra"
+      }
+    },
+    {
+      "id": "C07",
+      "nome": "Site lento ou ruim no celular",
+      "servico": "programacao",
+      "impacto": 3,
+      "regra_resumo": "PageSpeed mobile abaixo de 50 OU LCP acima de 4 s (alta, dado da API do Google).",
+      "hipotese_base": "o site demora {lcp_segundos} segundos para abrir no celular",
+      "pergunta_base": "Vocês sabiam disso?",
+      "oferta_base": "te mandar o print do teste e 2 ajustes simples",
+      "solucao_kethytech": {
+        "texto": "dá pra deixar o site abrindo rápido no celular sem refazer tudo",
+        "palavra_chave": "da pra"
+      }
+    },
+    {
+      "id": "C08",
+      "nome": "Ficha do Google não aponta para um site",
+      "servico": "programacao",
+      "impacto": 3,
+      "regra_resumo": "Ficha do Google sem site (alta). Se for franquia, a rede pode ter página da unidade: confiança media e a frase fala da ficha, nunca 'vocês não têm site'.",
+      "hipotese_base": "a ficha do Google não leva para nenhum site, e quem está pesquisando tratamento mais caro costuma querer ver equipe, casos e como funciona antes de chamar",
+      "pergunta_base": "Hoje vocês têm alguma página que mostre isso?",
+      "oferta_base": "te mostrar um exemplo de página simples com agendamento pelo WhatsApp",
+      "solucao_kethytech": {
+        "texto": "dá pra ter uma página simples que mostra a clínica e leva direto pro WhatsApp",
+        "palavra_chave": "da pra"
+      }
+    },
+    {
+      "id": "C09",
+      "nome": "Instagram parado",
+      "servico": "marketing",
+      "impacto": 2,
+      "regra_resumo": "Último post há mais de 60 dias (alta).",
+      "hipotese_base": "o Instagram está sem post desde {data_ultimo_post}",
+      "pergunta_base": "Foi uma pausa planejada ou ficou de lado com a correria?",
+      "oferta_base": "te mandar em 2 linhas como outras clínicas mantêm isso sem esforço",
+      "solucao_kethytech": {
+        "texto": "dá pra manter o Instagram ativo sem tomar o tempo de vocês",
+        "palavra_chave": "da pra"
+      }
+    },
+    {
+      "id": "C10",
+      "nome": "Anúncio ativo levando ao WhatsApp sem estrutura de resposta",
+      "servico": "automacao",
+      "impacto": 5,
+      "regra_resumo": "Anúncio ativo com destino WhatsApp E (C01 ou C03 detectado). Confiança herdada do sinal de atendimento.",
+      "hipotese_base": "vocês estão com anúncio de {procedimento_anuncio} levando direto pro WhatsApp, e lead pago que espera esfria rápido",
+      "pergunta_base": "Quem responde esses contatos hoje?",
+      "oferta_base": "te mandar em 2 linhas como responder esse lead em segundos, até à noite",
+      "solucao_kethytech": {
+        "texto": "dá pra responder esse lead do anúncio em segundos, até à noite",
+        "palavra_chave": "da pra"
+      }
+    },
+    {
+      "id": "C11",
+      "nome": "Faltas e remarcações",
+      "servico": "automacao",
+      "impacto": 4,
+      "regra_resumo": "Avaliação recente com a tag faltas_remarcacao (media; alta com 2+).",
+      "hipotese_base": "tem avaliação comentando remarcação e confirmação de consulta",
+      "pergunta_base": "Falta e remarcação pesam aí hoje?",
+      "oferta_base": "te mostrar como funciona a confirmação automática com lista de espera",
+      "solucao_kethytech": {
+        "texto": "dá pra confirmar as consultas sozinho e encaixar quem está na lista de espera",
+        "palavra_chave": "da pra"
+      }
+    },
+    {
+      "id": "C12",
+      "nome": "Número em destaque é fixo e o WhatsApp fica escondido",
+      "servico": "automacao",
+      "impacto": 3,
+      "regra_resumo": "Telefone principal da ficha é fixo E existe WhatsApp só em botão secundário (agendar/link). Alta quando os dois foram vistos. Se não existe WhatsApp nenhum, a regra é a C06.",
+      "hipotese_base": "o número que aparece em destaque no Google é o fixo, então quem toca nele pelo celular cai numa ligação, e depois do horário ninguém atende; o WhatsApp fica só no botão de agendar",
+      "pergunta_base": "Hoje chega mais paciente pela ligação ou pelo WhatsApp?",
+      "oferta_base": "te mandar em 2 linhas como deixar o WhatsApp como porta principal",
+      "solucao_kethytech": {
+        "texto": "dá pra deixar o WhatsApp como porta principal, já respondendo fora do horário",
+        "palavra_chave": "da pra"
+      }
+    },
+    {
+      "id": "C13",
+      "nome": "Demora medida no teste do WhatsApp",
+      "servico": "automacao",
+      "impacto": 5,
+      "regra_resumo": "Teste real (cliente oculto) com resposta depois de 60 min ou sem resposta (alta). Se a clínica respondeu em até 30 min fora do horário, C01 e C03 são descartados.",
+      "hipotese_base": "mandei uma pergunta simples no WhatsApp de vocês {enviado_em} e a resposta veio {resposta_em}",
+      "pergunta_base": "Isso é comum aí ou foi um dia atípico?",
+      "oferta_base": "te mostrar como ficaria respondendo na hora, inclusive à noite",
+      "solucao_kethytech": {
+        "texto": "dá pra deixar o WhatsApp respondendo na hora, inclusive à noite",
+        "palavra_chave": "da pra"
+      }
+    }
+  ],
+  "teste_ab": {
+    "ativo": true,
+    "variantes": {
+      "A": "sem falar da solução",
+      "B": "com meia frase do que a KethyTech entrega (sem ensinar como)"
+    }
+  }
+}

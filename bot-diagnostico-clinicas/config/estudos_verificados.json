@@ -1,0 +1,72 @@
+{
+  "regra": "A IA só pode citar estudos desta tabela, copiando a frase_permitida (pode adaptar o começo da frase, nunca os números nem o que o estudo mede). Só no diagnóstico e na demonstração, nunca na primeira mensagem nem no follow-up.",
+  "estudos": [
+    {
+      "id": "E1",
+      "fonte_curta": "Harvard Business Review",
+      "referencia": "Oldroyd, McElheran e Elkington, 'The Short Life of Online Sales Leads', Harvard Business Review, 2011",
+      "frase_permitida": "Uma auditoria da Harvard Business Review com 2.241 empresas mostrou que quem responde o contato em até 1 hora tem cerca de 7 vezes mais chance de conseguir conversar de verdade com o cliente do que quem demora mais.",
+      "o_que_mede": "Chance de qualificar o lead (conseguir uma conversa com quem decide), não fechamento de venda.",
+      "ressalva": "Empresas dos EUA, contatos por formulário de site, 2011. Não é estudo de clínica nem de WhatsApp.",
+      "palavras_chave": [
+        "harvard"
+      ],
+      "problemas": [
+        "C01",
+        "C03",
+        "C10",
+        "C12",
+        "C13"
+      ],
+      "raizes_vedadas_na_citacao": [
+        "vend",
+        "fech",
+        "fatur",
+        "lucr",
+        "receita",
+        "compr"
+      ]
+    },
+    {
+      "id": "E2",
+      "fonte_curta": "Opinion Box",
+      "referencia": "Pesquisa 'WhatsApp no Brasil', Opinion Box, 2025",
+      "frase_permitida": "Segundo a pesquisa WhatsApp no Brasil da Opinion Box (2025), 62% dos brasileiros já desistiram de uma compra pelo WhatsApp depois de uma experiência ruim.",
+      "o_que_mede": "Desistência de compra pelo WhatsApp após experiência negativa (autodeclarado).",
+      "ressalva": "Consumidores em geral, não só pacientes; 'experiência ruim' inclui outros motivos além da demora. Número obtido via divulgação da pesquisa na imprensa.",
+      "palavras_chave": [
+        "opinion box"
+      ],
+      "problemas": [
+        "C01",
+        "C03",
+        "C06",
+        "C10",
+        "C12",
+        "C13"
+      ],
+      "raizes_vedadas_na_citacao": [
+        "pacient",
+        "clinic",
+        "demor"
+      ]
+    },
+    {
+      "id": "E3",
+      "fonte_curta": "David Maister",
+      "referencia": "David Maister, 'The Psychology of Waiting Lines', 1985",
+      "frase_permitida": "O pesquisador David Maister mostrou que espera sem previsão parece mais longa e incomoda mais do que espera com prazo conhecido.",
+      "o_que_mede": "Percepção da espera (por que uma mensagem de ausência com horário de retorno ajuda).",
+      "ressalva": "Texto clássico de psicologia de serviços, baseado em observação, não em experimento com clínicas.",
+      "palavras_chave": [
+        "maister"
+      ],
+      "problemas": [
+        "C01",
+        "C03",
+        "C13"
+      ],
+      "raizes_vedadas_na_citacao": []
+    }
+  ]
+}

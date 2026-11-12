@@ -1,0 +1,62 @@
+[LEAD]
+clinica: Clínica Exemplo Derma
+cidade: Campinas
+origem_contato: ficha do Google
+decisor:
+
+[GOOGLE]
+Clínica Exemplo Derma
+4,1 ★★★★☆ (87 avaliações) · Dermatologista
+Endereço: Rua Fictícia, 100 - Cambuí, Campinas - SP
+Fechado · Abre seg. às 08:00
+Telefone: (19) 3200-0000
+segunda-feira 08:00–18:00
+terça-feira 08:00–18:00
+quarta-feira 08:00–18:00
+quinta-feira 08:00–18:00
+sexta-feira 08:00–18:00
+sábado Fechado
+domingo Fechado
+Site: clinicaexemploderma.com.br
+
+[AVALIACOES]
+1 estrela · há 3 semanas
+"Médica ótima, mas tentei marcar retorno pelo WhatsApp e demoraram 2 dias pra responder."
+(sem resposta do proprietário)
+
+2 estrelas · há 2 meses
+"Ninguém atende o telefone e no WhatsApp só visualizam. Desisti e fui em outra clínica."
+(sem resposta do proprietário)
+
+5 estrelas · há 2 meses
+"Atendimento excelente da doutora, recomendo!"
+(sem resposta do proprietário)
+
+4 estrelas · há 4 meses
+"Gostei do tratamento, só achei difícil conseguir horário."
+Resposta do proprietário: "Obrigada pelo retorno!"
+
+5 estrelas · há 5 meses
+"Equipe muito atenciosa."
+(sem resposta do proprietário)
+
+3 estrelas · há 1 ano
+"Remarcaram minha consulta duas vezes sem avisar."
+(sem resposta do proprietário)
+
+[SITE]
+Página inicial: "Agende sua avaliação pelo telefone (19) 3200-0000". Não há agendamento online nem botão de WhatsApp na página.
+
+[PAGESPEED]
+Mobile: performance 38. Largest Contentful Paint: 6,8 s.
+
+[INSTAGRAM]
+@clinicaexemploderma · último post em 12 de agosto de 2026 (89 dias atrás)
+
+[ANUNCIOS]
+Biblioteca de Anúncios da Meta: 2 anúncios ativos de "peeling e limpeza de pele", botão "Enviar mensagem" para o WhatsApp.
+
+[TESTE_WHATSAPP]
+pergunta: Vocês atendem sábado?
+enviado: 2026-11-06 20:10
+resposta: 2026-11-07 10:40

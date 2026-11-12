@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador WhatsApp SDR V3 — Oferta Concreta, Objeções & Cadência D0/D4/D12</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      background-color: #0c1317;
+      color: #e9edef;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .sim-topbar {
+      background: #111b21;
+      border-bottom: 1px solid #222d34;
+      padding: 8px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+    .sim-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #00a884;
+      color: #111b21;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .sim-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ffffff;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+    .btn-metrics-modal {
+      background: #202c33;
+      border: 1px solid #00a884;
+      color: #00a884;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-metrics-modal:hover {
+      background: #00a884;
+      color: #111b21;
+    }
+
+    .app-container {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - 47px);
+      overflow: hidden;
+    }
+
+    /* Coluna Lateral */
+    .sidebar {
+      width: 370px;
+      background: #111b21;
+      border-right: 1px solid #222d34;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar-header {
+      padding: 10px 14px;
+      background: #202c33;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 13.5px;
+    }
+    .tier-filters {
+      display: flex;
+      background: #182229;
+      padding: 6px 8px;
+      gap: 5px;
+      border-bottom: 1px solid #222d34;
+    }
+    .btn-tier-filter {
+      flex: 1;
+      background: transparent;
+      border: 1px solid #2a3942;
+      color: #8696a0;
+      font-size: 11px;
+      padding: 5px 4px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn-tier-filter.active {
+      background: #00a884;
+      color: #111b21;
+      border-color: #00a884;
+    }
+
+    .lead-list {
+      flex: 1;
+      overflow-y: auto;
+    }
+    .lead-item {
+      display: flex;
+      gap: 11px;
+      padding: 10px 14px;
+      border-bottom: 1px solid #1f2c34;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      align-items: center;
+    }
+    .lead-item:hover {
+      background: #202c33;
+    }
+    .lead-item.active {
+      background: #2a3942;
+    }
+    .lead-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .lead-info {
+      flex: 1;
+      overflow: hidden;
+    }
+    .lead-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+    .lead-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #e9edef;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tier-pill {
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+    .tier-pill.tier-a { background: #00a88422; color: #00a884; border: 1px solid #00a88455; }
+    .tier-pill.tier-b { background: #3b82f622; color: #60a5fa; border: 1px solid #3b82f655; }
+    .tier-pill.tier-c { background: #eab30822; color: #facc15; border: 1px solid #eab30855; }
+
+    .source-tag {
+      font-size: 10.5px;
+      color: #00a884;
+      margin-bottom: 2px;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .lead-last-msg {
+      font-size: 11.5px;
+      color: #8696a0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Área Central */
+    .chat-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background-color: #0b141a;
+      background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+      background-repeat: repeat;
+      background-blend-mode: overlay;
+      position: relative;
+    }
+    .chat-header {
+      background: #202c33;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #222d34;
+      z-index: 5;
+    }
+    .chat-header-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .chat-header-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .chat-header-name {
+      font-size: 14.5px;
+      font-weight: 600;
+    }
+    .chat-header-status {
+      font-size: 11.5px;
+      color: #8696a0;
+    }
+    .chat-header-status.typing {
+      color: #00a884;
+      font-weight: 600;
+      animation: blink 1.2s infinite;
+    }
+    @keyframes blink {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
+    /* Barra de Cadência (D+0 Oferta, D+0 Pergunta, D+4, D+12) */
+    .cadence-bar {
+      background: #182229;
+      border-bottom: 1px solid #222d34;
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .cadence-label {
+      font-size: 11px;
+      color: #8696a0;
+      font-weight: 600;
+      margin-right: 4px;
+    }
+    .btn-cadence {
+      background: #202c33;
+      border: 1px solid #2a3942;
+      color: #d1d7db;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+    .btn-cadence:hover {
+      border-color: #00a884;
+      color: #fff;
+      background: #2a3942;
+    }
+    .btn-cadence.highlight {
+      border-color: #00a88488;
+      color: #00a884;
+      font-weight: 600;
+    }
+
+    .messages-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .date-divider {
+      align-self: center;
+      background: #182229;
+      color: #8696a0;
+      font-size: 10.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin: 4px 0;
+      text-transform: uppercase;
+    }
+    .bubble {
+      max-width: 68%;
+      padding: 8px 12px 6px 12px;
+      border-radius: 8px;
+      font-size: 13.8px;
+      line-height: 19px;
+      position: relative;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      animation: popIn 0.2s ease-out;
+    }
+    @keyframes popIn {
+      from { transform: scale(0.96); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .bubble-lead {
+      align-self: flex-start;
+      background: #202c33;
+      color: #e9edef;
+      border-top-left-radius: 0;
+    }
+    .bubble-sdr {
+      align-self: flex-end;
+      background: #005c4b;
+      color: #e9edef;
+      border-top-right-radius: 0;
+    }
+    .bubble-meta {
+      float: right;
+      margin-left: 12px;
+      margin-top: 4px;
+      font-size: 10px;
+      color: #8696a0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .bubble-sdr .bubble-meta {
+      color: #79bfad;
+    }
+    .check-icon {
+      color: #53bdeb;
+      font-weight: bold;
+    }
+
+    .typing-bubble {
+      align-self: flex-end;
+      background: #005c4b99;
+      border: 1px dashed #00a884;
+      padding: 6px 14px;
+      border-radius: 16px;
+      font-size: 11.5px;
+      color: #d1d7db;
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+    .dot-flashing {
+      position: relative;
+      width: 6px;
+      height: 6px;
+      border-radius: 5px;
+      background-color: #00a884;
+      color: #00a884;
+      animation: dot-flashing 1s infinite linear alternate;
+      animation-delay: 0.5s;
+    }
+    .dot-flashing::before, .dot-flashing::after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 0;
+    }
+    .dot-flashing::before {
+      left: -10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 5px;
+      background-color: #00a884;
+      color: #00a884;
+      animation: dot-flashing 1s infinite alternate;
+      animation-delay: 0s;
+    }
+    .dot-flashing::after {
+      left: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 5px;
+      background-color: #00a884;
+      color: #00a884;
+      animation: dot-flashing 1s infinite alternate;
+      animation-delay: 1s;
+    }
+    @keyframes dot-flashing {
+      0% { background-color: #00a884; }
+      50%, 100% { background-color: rgba(0, 168, 132, 0.2); }
+    }
+
+    /* Barra de Objeções Difíceis de 1 Clique */
+    .objection-chips-bar {
+      background: #182229;
+      border-top: 1px solid #222d34;
+      padding: 7px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+    }
+    .chip-label {
+      font-size: 11px;
+      color: #facc15;
+      font-weight: 700;
+      white-space: nowrap;
+      margin-right: 2px;
+    }
+    .btn-chip {
+      background: #202c33;
+      border: 1px solid #3b4a54;
+      color: #e9edef;
+      font-size: 11.5px;
+      padding: 4px 10px;
+      border-radius: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .btn-chip:hover {
+      background: #00a884;
+      color: #111b21;
+      border-color: #00a884;
+      font-weight: 600;
+    }
+    .btn-chip.positive {
+      border-color: #00a884;
+      color: #00a884;
+    }
+
+    .chat-footer {
+      background: #202c33;
+      padding: 8px 16px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      border-top: 1px solid #222d34;
+    }
+    .input-mode-label {
+      font-size: 11.5px;
+      color: #00a884;
+      background: #111b21;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .chat-input {
+      flex: 1;
+      background: #2a3942;
+      border: none;
+      outline: none;
+      color: #e9edef;
+      font-size: 13.8px;
+      padding: 9px 14px;
+      border-radius: 8px;
+    }
+    .btn-send {
+      background: #00a884;
+      border: none;
+      color: #111b21;
+      font-weight: 600;
+      padding: 9px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13.5px;
+    }
+    .btn-send:hover {
+      background: #06cf9c;
+    }
+
+    /* Painel Lateral de Diagnóstico */
+    .telemetry-panel {
+      width: 340px;
+      background: #111b21;
+      border-left: 1px solid #222d34;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      overflow-y: auto;
+    }
+    .telemetry-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #00a884;
+      letter-spacing: 0.5px;
+    }
+    .card-stat {
+      background: #1f2c34;
+      border-radius: 8px;
+      padding: 10px 12px;
+      border: 1px solid #2a3942;
+    }
+    .card-stat-label {
+      font-size: 10.5px;
+      color: #8696a0;
+      margin-bottom: 3px;
+      text-transform: uppercase;
+    }
+    .card-stat-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e9edef;
+      line-height: 17px;
+    }
+    .card-stat-desc {
+      font-size: 11.5px;
+      color: #00a884;
+      margin-top: 4px;
+    }
+    .compliance-box {
+      border-left: 3px solid #facc15;
+      padding-left: 8px;
+      margin-top: 4px;
+      font-size: 11.5px;
+      color: #d1d7db;
+    }
+
+    /* Modal de Métricas e Teste A/B */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.78);
+      backdrop-filter: blur(4px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+    .modal-content {
+      background: #111b21;
+      border: 1px solid #2a3942;
+      border-radius: 12px;
+      width: 780px;
+      max-width: 94vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 22px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #222d34;
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+    }
+    .modal-title {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: #00a884;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      color: #8696a0;
+      font-size: 22px;
+      cursor: pointer;
+    }
+    .tier-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      margin-top: 8px;
+      margin-bottom: 16px;
+    }
+    .tier-table th, .tier-table td {
+      padding: 9px 10px;
+      text-align: left;
+      border-bottom: 1px solid #1f2c34;
+    }
+    .tier-table th {
+      color: #8696a0;
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+    .alert-rule-box {
+      background: #00a88415;
+      border: 1px solid #00a88455;
+      border-radius: 8px;
+      padding: 11px 14px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #e9edef;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="sim-topbar">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <span class="sim-badge"><span class="sim-pulse"></span> SDR V3 — Evidência Gong + 30MPC</span>
+      <span style="font-size: 12.5px; color: #8696a0;">
+        Oferta Concreta (+28%) • Origem do Número • Objeções & Cadência D+0 / D+4 / D+12
+      </span>
+    </div>
+    <div style="display: flex; gap: 10px; align-items: center;">
+      <button class="btn-metrics-modal" onclick="abrirModalMetricas()">
+        📊 Pirâmide de Tiers & Teste A/B (Oferta vs Pergunta)
+      </button>
+    </div>
+  </div>
+
+  <div class="app-container">
+    <!-- Lista de Contatos (Pirâmide Realista: 2 Tier A, 3 Tier B, 3 Tier C) -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <span>Pirâmide Realista (2 A : 3 B : 3 C)</span>
+      </div>
+
+      <div class="tier-filters">
+        <button class="btn-tier-filter active" onclick="filtrarTier('todos', this)">Todos (8)</button>
+        <button class="btn-tier-filter" onclick="filtrarTier('Tier A', this)">Tier A (2)</button>
+        <button class="btn-tier-filter" onclick="filtrarTier('Tier B', this)">Tier B (3)</button>
+        <button class="btn-tier-filter" onclick="filtrarTier('Tier C', this)">Tier C (3)</button>
+      </div>
+
+      <div class="lead-list" id="leadList"></div>
+    </div>
+
+    <!-- Janela Central -->
+    <div class="chat-area">
+      <div class="chat-header">
+        <div class="chat-header-user">
+          <img class="chat-header-avatar" id="headerAvatar" src="" alt="Avatar">
+          <div>
+            <div class="chat-header-name" id="headerName">Selecione um contato</div>
+            <div class="chat-header-status" id="headerStatus">online</div>
+          </div>
+        </div>
+        <div class="chat-header-actions">
+          <button class="btn-cadence" onclick="resetarConversa()">🔄 Resetar</button>
+        </div>
+      </div>
+
+      <!-- Barra de Simulação de Cadência e Teste A/B -->
+      <div class="cadence-bar">
+        <span class="cadence-label">📅 Testar Cadência / A/B:</span>
+        <button class="btn-cadence highlight" onclick="dispararCadencia('d0_oferta')" title="Versão B: Oferta Concreta (+28% Gong Labs)">🎁 D+0: Versão Oferta (Padrão)</button>
+        <button class="btn-cadence" onclick="dispararCadencia('d0_pergunta')" title="Versão A: Pergunta 'Faz sentido?' para Teste A/B">❓ D+0: Versão Pergunta (A/B)</button>
+        <button class="btn-cadence" onclick="dispararCadencia('d4_valor')" title="Toque 2 em D+4 trazendo dado/ângulo novo sem cobrar resposta">📈 D+4: Valor Novo (Sem cobrança)</button>
+        <button class="btn-cadence" onclick="dispararCadencia('d12_breakup')" title="Toque 3 final em D+12 sem chantagem emocional">👋 D+12: Encerramento (Breakup)</button>
+        <button class="btn-cadence highlight" onclick="dispararCadencia('deliverable')" title="Entrega imediata da isca prometida + ponte para 12 min">📦 Entregar Isca (Deliver-Then-Bridge)</button>
+        <button class="btn-cadence highlight" onclick="dispararCadencia('d0_roteada')" title="Super Tier: a IA diagnostica o gargalo (site, anúncio ou atendimento) e muda a pergunta">🧭 D+0: Roteada pelo Diagnóstico (Super Tier)</button>
+        <div id="diagBox" style="display:none; flex-basis:100%; margin-top:6px; padding:8px 10px; border-radius:8px; background:#1f2c34; color:#e9edef; font-size:12px; line-height:1.45;"></div>
+      </div>
+
+      <!-- Mensagens -->
+      <div class="messages-container" id="messagesContainer">
+        <div class="date-divider">Hoje</div>
+      </div>
+
+      <!-- Indicador Digitando -->
+      <div style="padding: 0 50px 6px 50px;">
+        <div class="typing-bubble" id="typingIndicator">
+          <div class="dot-flashing"></div>
+          <span id="typingLabel">SDR digitando...</span>
+        </div>
+      </div>
+
+      <!-- Barra de 1 Clique para Testar as Respostas Difíceis -->
+      <div class="objection-chips-bar">
+        <span class="chip-label">⚡ Simular Resposta do Lead:</span>
+        <button class="btn-chip positive" onclick="simularCliqueObjeção('Pode me mandar sim, quero ver!')">✅ "Pode mandar!"</button>
+        <button class="btn-chip" onclick="simularCliqueObjeção('Quem te passou meu número?')">🕵️ "Quem passou meu número?"</button>
+        <button class="btn-chip" onclick="simularCliqueObjeção('Isso é golpe? Não clico em link.')">🚨 "É golpe?"</button>
+        <button class="btn-chip" onclick="simularCliqueObjeção('Quanto custa isso por mês?')">💰 "Quanto custa?"</button>
+        <button class="btn-chip" onclick="simularCliqueObjeção('Estou sem tempo agora, me manda por e-mail.')">📧 "Manda por e-mail"</button>
+        <button class="btn-chip" onclick="simularCliqueObjeção('Já tenho secretária que cuida do WhatsApp.')">👩‍💼 "Já tenho secretária"</button>
+      </div>
+
+      <!-- Input Livre -->
+      <div class="chat-footer">
+        <span class="input-mode-label" id="inputRoleLabel">👤 Você como: Lead</span>
+        <input type="text" class="chat-input" id="chatInput" placeholder="Ou digite qualquer objeção livremente e aperte Enter..." onkeydown="if(event.key === 'Enter') enviarMensagemLead()">
+        <button class="btn-send" onclick="enviarMensagemLead()">Enviar</button>
+      </div>
+    </div>
+
+    <!-- Painel Lateral Direito -->
+    <div class="telemetry-panel">
+      <div class="telemetry-title">🔬 Checklist de Qualidade V3</div>
+      
+      <div class="card-stat">
+        <div class="card-stat-label">Empresa & Origem Explícita (Anti-Golpe)</div>
+        <div class="card-stat-value" id="statCompany" style="color: #00a884;">-</div>
+        <div class="card-stat-desc" id="statOrigin" style="color: #d1d7db; font-size: 11px;">-</div>
+      </div>
+
+      <div class="card-stat">
+        <div class="card-stat-label">Fato Único Observado</div>
+        <div class="card-stat-value" id="statSource">-</div>
+        <div class="card-stat-desc" id="statTrigger" style="color: #8696a0;">-</div>
+      </div>
+
+      <div class="card-stat">
+        <div class="card-stat-label">Guardrail Anti-Placeholder</div>
+        <div class="card-stat-value" id="statGuardrail" style="color: #00a884;">✅ 100% Limpo (Zero campos genéricos)</div>
+        <div class="card-stat-desc">Identificação: "da KethyTech, de automação de atendimento"</div>
+      </div>
+
+      <div class="card-stat">
+        <div class="card-stat-label">Playbook de Objeções Ativo</div>
+        <ul style="list-style: none; font-size: 11px; color: #8696a0; display: flex; flex-direction: column; gap: 5px;">
+          <li>✓ <strong>"Pode mandar":</strong> Entrega os 3 pontos reais antes de sugerir call de 12 min (Curiosity Gap)</li>
+          <li>✓ <strong>"Manda por e-mail":</strong> Método Mr. Miyagi (Concorda + 1 pergunta filtro)</li>
+          <li>✓ <strong>"Quanto custa?":</strong> Faixa transparente + âncora de retorno</li>
+          <li>✓ <strong>"Já tenho secretária":</strong> Elogia a secretária e posiciona apoio noturno (Status Quo Bias)</li>
+          <li>✓ <strong>"Quem passou o número?":</strong> Fonte pública + técnica BYAF ("apago na hora se preferir")</li>
+        </ul>
+      </div>
+
+      <div class="card-stat">
+        <div class="card-stat-label">Compliance do Segmento</div>
+        <div class="compliance-box" id="statCompliance">-</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Métricas e Teste A/B -->
+  <div class="modal-overlay" id="metricsModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">📊 Pirâmide Realista de Tiers & Teste A/B em Produção</div>
+        <button class="modal-close" onclick="fecharModalMetricas()">&times;</button>
+      </div>
+
+      <h4 style="font-size: 13px; color: #e9edef; margin-bottom: 4px;">1. Medição por Tier (4 a 6 Semanas) — Pirâmide Sustentável</h4>
+      <p style="font-size: 11.5px; color: #8696a0; margin-bottom: 8px;">
+        O Tier A exige 15 a 25 min por lead (Mystery Shopping) e deve representar apenas 15% a 20% da carteira.
+      </p>
+
+      <table class="tier-table">
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Proporção</th>
+            <th>Tempo / Lead</th>
+            <th>Taxa Resposta</th>
+            <th>Reuniões / Lead</th>
+          </tr>
+        </thead>
+        <tbody id="metricsTableBody"></tbody>
+      </table>
+
+      <h4 style="font-size: 13px; color: #00a884; margin-top: 14px; margin-bottom: 4px;">2. Teste A/B: Versão "Pergunta" vs. Versão "Oferta Concreta"</h4>
+      <p style="font-size: 11.5px; color: #8696a0; margin-bottom: 8px;">
+        Critério de vitória: <strong>Reuniões marcadas e realizadas por contato abordado</strong>, monitorando bloqueios/opt-out.
+      </p>
+
+      <table class="tier-table">
+        <thead>
+          <tr>
+            <th>Braço do Experimento</th>
+            <th>Leads</th>
+            <th>Respostas Positivas</th>
+            <th>Reuniões Realizadas</th>
+            <th>Taxa Reunião</th>
+            <th>Opt-Out / Bloqueio</th>
+          </tr>
+        </thead>
+        <tbody id="abTableBody"></tbody>
+      </table>
+
+      <div class="alert-rule-box" id="alertRuleBox"></div>
+    </div>
+  </div>
+
+  <script>
+    let leads = [];
+    let currentLead = null;
+    let filtroAtual = 'todos';
+
+    async function carregarLeads() {
+      try {
+        const res = await fetch('/api/leads');
+        leads = await res.json();
+        renderizarLista();
+        if (leads.length > 0 && !currentLead) {
+          selecionarLead(leads[0].id);
+        }
+      } catch (err) {
+        console.error("Erro ao carregar leads:", err);
+      }
+    }
+
+    function filtrarTier(tier, btn) {
+      filtroAtual = tier;
+      document.querySelectorAll('.btn-tier-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderizarLista();
+    }
+
+    function renderizarLista() {
+      const container = document.getElementById('leadList');
+      container.innerHTML = '';
+
+      const filtrados = leads.filter(l => filtroAtual === 'todos' || l.tier === filtroAtual);
+
+      filtrados.forEach(lead => {
+        const item = document.createElement('div');
+        item.className = `lead-item ${currentLead && currentLead.id === lead.id ? 'active' : ''}`;
+        item.onclick = () => selecionarLead(lead.id);
+
+        const tierClass = lead.tier === 'Tier A' ? 'tier-a' : (lead.tier === 'Tier B' ? 'tier-b' : 'tier-c');
+        const lastMsg = lead.messages && lead.messages.length > 0 
+          ? lead.messages[lead.messages.length - 1].text 
+          : 'Nenhuma mensagem';
+
+        item.innerHTML = `
+          <img class="lead-avatar" src="${lead.avatar}" alt="${lead.name}">
+          <div class="lead-info">
+            <div class="lead-header-row">
+              <span class="lead-name">${lead.name}</span>
+              <span class="tier-pill ${tierClass}">${lead.tier}</span>
+            </div>
+            <span class="source-tag">📍 ${lead.sourceType}</span>
+            <div class="lead-last-msg">${lastMsg}</div>
+          </div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function selecionarLead(leadId) {
+      currentLead = leads.find(l => l.id === leadId);
+      if (!currentLead) return;
+
+      document.getElementById('headerAvatar').src = currentLead.avatar;
+      document.getElementById('headerName').innerText = `${currentLead.name} (${currentLead.tier})`;
+      document.getElementById('headerStatus').innerText = 'online';
+      document.getElementById('inputRoleLabel').innerText = `👤 Você como: ${currentLead.name.split('—')[0].trim()}`;
+
+      document.getElementById('statCompany').innerText = currentLead.company;
+      document.getElementById('statOrigin').innerText = `Origem declarada: ${currentLead.contactOrigin}`;
+      document.getElementById('statSource').innerText = currentLead.sourceType;
+      document.getElementById('statTrigger').innerText = currentLead.trigger;
+
+      const compEl = document.getElementById('statCompliance');
+      if (currentLead.id === 'lead-andre-oab') {
+        compEl.innerHTML = '<strong>Provimento 205/2021 OAB:</strong> Apenas triagem receptiva de quem já procura o escritório.';
+      } else if (currentLead.id.includes('paula') || currentLead.id.includes('fernanda')) {
+        compEl.innerHTML = '<strong>Resolução CFM 2.336/2023:</strong> Sem promessa de resultado clínico. Foco operacional na recepção.';
+      } else if (currentLead.id.includes('rafael') || currentLead.id.includes('marcos')) {
+        compEl.innerHTML = '<strong>Mystery Shopping Ético:</strong> Pergunta simples sem ocupar vaga na agenda e revelação transparente.';
+      } else {
+        compEl.innerHTML = '<strong>LGPD Art. 7º:</strong> Origem pública informada na 1ª frase + saída fácil.';
+      }
+
+      renderizarMensagens();
+      renderizarLista();
+    }
+
+    function renderizarMensagens() {
+      const container = document.getElementById('messagesContainer');
+      container.innerHTML = '<div class="date-divider">Hoje</div>';
+
+      if (!currentLead || !currentLead.messages) return;
+
+      currentLead.messages.forEach(m => {
+        adicionarBalaoNaTela(m.sender, m.text, m.time);
+      });
+
+      scrollFinal();
+    }
+
+    function adicionarBalaoNaTela(sender, text, time) {
+      const container = document.getElementById('messagesContainer');
+      const bubble = document.createElement('div');
+      bubble.className = `bubble bubble-${sender}`;
+      
+      const checkHtml = sender === 'sdr' ? '<span class="check-icon">✓✓</span>' : '';
+      bubble.innerHTML = `
+        <span>${escapeHtml(text)}</span>
+        <span class="bubble-meta">
+          ${time || 'agora'} ${checkHtml}
+        </span>
+      `;
+      container.appendChild(bubble);
+      scrollFinal();
+    }
+
+    function scrollFinal() {
+      const container = document.getElementById('messagesContainer');
+      container.scrollTop = container.scrollHeight;
+    }
+
+    async function dispararCadencia(step) {
+      if (!currentLead) return;
+      try {
+        const res = await fetch('/api/cadence', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ leadId: currentLead.id, step })
+        });
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error);
+
+        const box = document.getElementById('diagBox');
+        if (data.diagnosis) {
+          const d = data.diagnosis;
+          const acao = d.action === 'nao_enviar' ? '🚫 NÃO ENVIAR' : (d.action === 'usar_padrao_com_revisao_humana' ? '👀 Abordagem padrão + revisão humana' : '✅ Enviar');
+          box.style.display = 'block';
+          box.innerHTML = `<strong>🧭 ${escapeHtml(d.label)}</strong> · confiança ${escapeHtml(d.confidence)} · ${acao}<br>` +
+            `<em>Evidência:</em> ${d.evidence.map(escapeHtml).join(' · ')}<br>${escapeHtml(d.reason)}` +
+            (d.sitePolicy ? `<br><em>Se o problema for o site (política "${escapeHtml(d.sitePolicy)}")</em>` : '');
+        } else {
+          box.style.display = 'none';
+        }
+        if (data.blocked) return;
+
+        currentLead.messages = data.lead.messages;
+        renderizarMensagens();
+        renderizarLista();
+      } catch (err) {
+        alert("Erro ao disparar etapa da cadência: " + err.message);
+      }
+    }
+
+    function simularCliqueObjeção(textoObjeção) {
+      const input = document.getElementById('chatInput');
+      input.value = textoObjeção;
+      enviarMensagemLead();
+    }
+
+    async function enviarMensagemLead() {
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text || !currentLead) return;
+
+      input.value = '';
+      const now = new Date();
+      const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+
+      adicionarBalaoNaTela('lead', text, timeStr);
+      currentLead.messages.push({
+        id: 'm_' + Date.now(),
+        sender: 'lead',
+        text: text,
+        time: timeStr
+      });
+      renderizarLista();
+
+      const typingEl = document.getElementById('typingIndicator');
+      const headerStatus = document.getElementById('headerStatus');
+      const typingLabel = document.getElementById('typingLabel');
+      
+      await new Promise(r => setTimeout(r, 700));
+
+      headerStatus.innerText = 'digitando...';
+      headerStatus.className = 'chat-header-status typing';
+      typingEl.style.display = 'inline-flex';
+      typingLabel.innerText = 'SDR aplicando Playbook Gong/30MPC...';
+
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            leadId: currentLead.id,
+            text: text,
+            sender: 'lead'
+          })
+        });
+
+        const data = await response.json();
+        if (!data.success) throw new Error(data.error || 'Erro na resposta');
+
+        for (let i = 0; i < data.bubbles.length; i++) {
+          const b = data.bubbles[i];
+          typingLabel.innerText = `SDR digitando balão ${i + 1}/${data.bubbles.length}...`;
+          await new Promise(r => setTimeout(r, Math.min(b.typingDurationMs, 2000)));
+
+          adicionarBalaoNaTela('sdr', b.text, b.time);
+
+          if (i < data.bubbles.length - 1) {
+            await new Promise(r => setTimeout(r, 600));
+          }
+        }
+
+      } catch (err) {
+        alert("Erro na IA: " + err.message);
+      } finally {
+        typingEl.style.display = 'none';
+        headerStatus.innerText = 'online';
+        headerStatus.className = 'chat-header-status';
+        renderizarLista();
+      }
+    }
+
+    async function resetarConversa() {
+      if (!currentLead) return;
+      const res = await fetch(`/api/leads/${currentLead.id}/reset`, { method: 'POST' });
+      const data = await res.json();
+      if (data.success) {
+        currentLead.messages = data.lead.messages;
+        renderizarMensagens();
+        renderizarLista();
+      }
+    }
+
+    async function abrirModalMetricas() {
+      const modal = document.getElementById('metricsModal');
+      const tbody = document.getElementById('metricsTableBody');
+      const abBody = document.getElementById('abTableBody');
+      modal.style.display = 'flex';
+
+      try {
+        const res = await fetch('/api/metrics');
+        const data = await res.json();
+        
+        tbody.innerHTML = `
+          <tr>
+            <td><strong style="color: #00a884;">Tier A (Mystery Shopping)</strong></td>
+            <td>${data.tierA.proporcaoCarteira}</td>
+            <td>${data.tierA.tempoMedioLead}</td>
+            <td><strong>${data.tierA.taxaResposta}</strong></td>
+            <td><strong style="color: #00a884;">${data.tierA.taxaReuniao}</strong></td>
+          </tr>
+          <tr>
+            <td><strong style="color: #60a5fa;">Tier B (1 Fonte Rápida)</strong></td>
+            <td>${data.tierB.proporcaoCarteira}</td>
+            <td>${data.tierB.tempoMedioLead}</td>
+            <td><strong>${data.tierB.taxaResposta}</strong></td>
+            <td><strong style="color: #60a5fa;">${data.tierB.taxaReuniao}</strong></td>
+          </tr>
+          <tr>
+            <td><strong style="color: #facc15;">Tier C (Escala / Sinal Único)</strong></td>
+            <td>${data.tierC.proporcaoCarteira}</td>
+            <td>${data.tierC.tempoMedioLead}</td>
+            <td><strong>${data.tierC.taxaResposta}</strong></td>
+            <td><strong style="color: #facc15;">${data.tierC.taxaReuniao}</strong></td>
+          </tr>
+        `;
+
+        const armA = data.abTest.armA_Pergunta;
+        const armB = data.abTest.armB_Oferta;
+        abBody.innerHTML = `
+          <tr>
+            <td>${armA.nome}</td>
+            <td>${armA.abordados}</td>
+            <td>${armA.respostasPositivas}</td>
+            <td>${armA.reunioesRealizadas}</td>
+            <td><strong>${armA.taxaReuniaoPorLead}</strong></td>
+            <td>${armA.bloqueiosOptOut}</td>
+          </tr>
+          <tr style="background: #00a88415;">
+            <td><strong style="color: #00a884;">${armB.nome}</strong></td>
+            <td>${armB.abordados}</td>
+            <td><strong>${armB.respostasPositivas}</strong></td>
+            <td><strong style="color: #00a884;">${armB.reunioesRealizadas}</strong></td>
+            <td><strong style="color: #00a884;">${armB.taxaReuniaoPorLead}</strong></td>
+            <td><strong style="color: #00a884;">${armB.bloqueiosOptOut}</strong></td>
+          </tr>
+        `;
+
+        document.getElementById('alertRuleBox').innerHTML = `<strong>⚠️ ${escapeHtml(data.aviso || '')}</strong><br><strong>Diagnóstico Operacional:</strong> ${data.regraAlerta}`;
+      } catch (e) {
+        tbody.innerHTML = '<tr><td colspan="5">Erro ao carregar métricas.</td></tr>';
+      }
+    }
+
+    function fecharModalMetricas() {
+      document.getElementById('metricsModal').style.display = 'none';
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.innerText = text;
+      return div.innerHTML;
+    }
+
+    carregarLeads();
+  </script>
+</body>
+</html>

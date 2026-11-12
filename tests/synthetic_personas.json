@@ -1,0 +1,477 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Synthetic Personas and Test Scenarios - WhatsApp SDR Whats-Kethy-Portatil",
+  "description": "Base de dados sintética com personas completas cobrindo os 5 nichos, 3 tiers e matriz de fontes públicas brasileiras.",
+  "metadata": {
+    "version": "1.0.0",
+    "createdAt": "2026-11-02T22:55:00Z",
+    "niches": ["dermatologia", "odontologia", "imobiliaria", "advocacia", "logistica"],
+    "tiers": ["A", "B", "C"]
+  },
+  "personas": [
+    {
+      "id": "lead-paula-derma",
+      "name": "Dra. Paula Mendes",
+      "company": "Clínica DermaLuxe Jardins",
+      "role": "Dermatologista & Sócia Fundadora",
+      "niche": "dermatologia",
+      "tier": "A",
+      "publicSources": {
+        "googleProfile": {
+          "rating": 4.1,
+          "reviewCount": 78,
+          "responseTime": "mais de 24 horas",
+          "closingTime": "18:00",
+          "verifiedTrigger": "3 das últimas 10 avaliações no Google citam demora no WhatsApp"
+        },
+        "website": {
+          "hasOnlineBooking": false,
+          "whatsappDirect": true
+        },
+        "instagram": {
+          "activePosts": true,
+          "unansweredComments": true
+        },
+        "metaAds": {
+          "hasActiveAds": true,
+          "clickToWhatsApp": true,
+          "activeCampaignTopic": "Procedimentos de Rejuvenescimento e Botox"
+        },
+        "doctoralia": {
+          "verified": true,
+          "onlineSchedule": false,
+          "crmOrCro": "CRM 142.890-SP",
+          "rqe": "RQE 78.432"
+        }
+      },
+      "mysteryShoppingResult": {
+        "testQuestion": "Boa tarde, qual o valor médio da aplicação de botox e vocês têm horário para esta semana?",
+        "measuredResponseTimeMinutes": 925,
+        "testedAt": "2026-10-14T19:15:00Z",
+        "miniDiagnostic3Lines": [
+          "1) Sem agendamento online no Doctoralia ou site oficial",
+          "2) Recepção encerra às 18h deixando mensagens noturnas sem triagem",
+          "3) 3 avaliações públicas recentes alertando sobre demora no retorno do WhatsApp"
+        ],
+        "frequentQuestionsList": [
+          "Qual o valor da aplicação de toxina botulínica / preenchimento?",
+          "Vocês atendem pelo meu plano de saúde / convênio?",
+          "Tem horário disponível para quinta ou sexta no fim da tarde?",
+          "Dra. Paula atende primeiro retorno ou só consulta nova?",
+          "Como funciona a preparação para o procedimento de laser?"
+        ],
+        "transparencyNotice": "Fizemos um teste simples de atendimento público sem efetuar agendamento, como diagnóstico gratuito."
+      },
+      "canonicalApproach": {
+        "bubble1": "Oi, Dra. Paula! Kethely da KethyTech em SP. Vi no Google que 3 das últimas 10 avaliações citam demora no WhatsApp.",
+        "bubble2": "Quando o lead espera, procura outra clínica. Posso mandar em 2 linhas como resolvemos isso? Se não for prioridade, me avisa.",
+        "splitText": "Oi, Dra. Paula! Kethely da KethyTech em SP. Vi no Google que 3 das últimas 10 avaliações citam demora no WhatsApp.---SPLIT---Quando o lead espera, procura outra clínica. Posso mandar em 2 linhas como resolvemos isso? Se não for prioridade, me avisa.",
+        "wordCount": 42,
+        "blocks": {
+          "source": "Vi no Google",
+          "verifiableFact": "3 das últimas 10 avaliações citam demora no WhatsApp",
+          "implication": "Quando o lead espera, procura outra clínica.",
+          "cta": "Posso mandar em 2 linhas como resolvemos isso? Se não for prioridade, me avisa."
+        }
+      },
+      "complianceRules": {
+        "cfm2336": "Sem fotos sensacionalistas de antes/depois, identificação com CRM e RQE, sem promessa de resultado.",
+        "lgpd": "Origem pública identificada, legítimo interesse B2B, opt-out imediato sob solicitação."
+      }
+    },
+    {
+      "id": "lead-rafael-odonto",
+      "name": "Dr. Rafael Castro",
+      "company": "Clínica OdontoSorriso Moema",
+      "role": "Cirurgião-Dentista & Diretor Clínico",
+      "niche": "odontologia",
+      "tier": "A",
+      "publicSources": {
+        "googleProfile": {
+          "rating": 4.5,
+          "reviewCount": 112,
+          "responseTime": "no dia seguinte",
+          "closingTime": "19:00",
+          "verifiedTrigger": "Horário noturno sem resposta e avaliações sobre confirmação de consulta"
+        },
+        "website": {
+          "hasOnlineBooking": false,
+          "whatsappDirect": true
+        },
+        "doctoralia": {
+          "verified": true,
+          "onlineSchedule": false,
+          "crmOrCro": "CRO 89.123-SP"
+        }
+      },
+      "mysteryShoppingResult": {
+        "testQuestion": "Olá, boa noite! Vocês realizam clareamento a laser e tem vaga para sábado de manhã?",
+        "measuredResponseTimeMinutes": 900,
+        "testedAt": "2026-10-18T19:00:00Z",
+        "miniDiagnostic3Lines": [
+          "1) Pergunta enviada às 19h com resposta somente no dia seguinte às 10h",
+          "2) Sem sistema de triagem automática para horários de sábado",
+          "3) Paciente ortodôntico busca resposta imediata no momento da dor ou interesse"
+        ],
+        "frequentQuestionsList": [
+          "Vocês atendem emergência odontológica ou dor de dente agora?",
+          "Aceitam convênio Amil Dental ou OdontoPrev?",
+          "Quanto custa em média o clareamento caseiro vs laser?",
+          "Tem vaga para atendimento aos sábados pela manhã?",
+          "Como funciona a primeira avaliação para aparelho ortodôntico?"
+        ],
+        "transparencyNotice": "Enviamos uma dúvida simples sem agendamento fictício como teste e diagnóstico gratuito de tempo de resposta da recepção."
+      },
+      "canonicalApproach": {
+        "bubble1": "Oi, Dr. Rafael! Sou a Kethely, da KethyTech em SP. Achei o consultório no Google e testei o WhatsApp ontem às 19h.",
+        "bubble2": "A resposta veio hoje às 10h. À noite muito paciente fecha com quem responde primeiro. Posso mandar o print e 2 ideias? Se não for prioridade, tranquilo.",
+        "splitText": "Oi, Dr. Rafael! Sou a Kethely, da KethyTech em SP. Achei o consultório no Google e testei o WhatsApp ontem às 19h.---SPLIT---A resposta veio hoje às 10h. À noite muito paciente fecha com quem responde primeiro. Posso mandar o print e 2 ideias? Se não for prioridade, tranquilo.",
+        "wordCount": 49,
+        "blocks": {
+          "source": "Achei o consultório no Google",
+          "verifiableFact": "testei o WhatsApp ontem às 19h. A resposta veio hoje às 10h.",
+          "implication": "À noite muito paciente fecha com quem responde primeiro.",
+          "cta": "Posso mandar o print e 2 ideias? Se não for prioridade, tranquilo."
+        }
+      },
+      "complianceRules": {
+        "cfoResolucoes": "Vedado anunciar avaliação gratuita como chamariz mercantilista; foco na redução de no-show e agilidade.",
+        "lgpd": "Transparência total sobre a origem dos dados públicos e eliminação cadastral se solicitado."
+      }
+    },
+    {
+      "id": "lead-marcos-imob",
+      "name": "Marcos Silveira",
+      "company": "Imobiliária Morada Nobre Pinheiros",
+      "role": "Diretor Comercial & Sócio",
+      "niche": "imobiliaria",
+      "tier": "A",
+      "publicSources": {
+        "realEstatePortals": {
+          "creci": "CRECI 34.567-J",
+          "activeListingsCount": 120,
+          "verifiedTrigger": "120 imóveis ativos no ZAP com contato centralizado no WhatsApp"
+        },
+        "website": {
+          "hasOnlineBooking": false,
+          "whatsappDirect": true
+        },
+        "metaAds": {
+          "hasActiveAds": true,
+          "clickToWhatsApp": true
+        }
+      },
+      "mysteryShoppingResult": {
+        "testQuestion": "Olá! Gostaria de saber se o apartamento de 3 dormitórios no Pinheiros ref 4402 ainda está disponível?",
+        "measuredResponseTimeMinutes": 270,
+        "testedAt": "2026-10-20T14:30:00Z",
+        "miniDiagnostic3Lines": [
+          "1) 120 anúncios ativos no ZAP gerando fluxo concentrado no mesmo número",
+          "2) Demora média de 4 horas para primeira resposta ao lead de portal",
+          "3) Ausência de triagem preliminar de perfil de renda e preferência de visita"
+        ],
+        "frequentQuestionsList": [
+          "O imóvel anunciado na referência ainda está disponível para locação/venda?",
+          "Aceita proposta ou financiamento bancário pela Caixa?",
+          "Qual o valor do condomínio e IPTU deste apartamento?",
+          "Tem vaga para visitar o imóvel amanhã no final da tarde?",
+          "Quais garantias locatícias vocês aceitam (seguro fiança, caução)?"
+        ],
+        "transparencyNotice": "Realizamos uma checagem pontual de disponibilidade como diagnóstico gratuito de atendimento imobiliário."
+      },
+      "canonicalApproach": {
+        "bubble1": "Oi, Marcos! Kethely da KethyTech em SP. Vi que a Morada Nobre tem 120 imóveis no ZAP direcionando pro WhatsApp.",
+        "bubble2": "Lead de portal esfria rápido enquanto o corretor está em visita. Faz sentido te mandar em 2 linhas como filtrar automaticamente? Se não fizer, me avisa.",
+        "splitText": "Oi, Marcos! Kethely da KethyTech em SP. Vi que a Morada Nobre tem 120 imóveis no ZAP direcionando pro WhatsApp.---SPLIT---Lead de portal esfria rápido enquanto o corretor está em visita. Faz sentido te mandar em 2 linhas como filtrar automaticamente? Se não fizer, me avisa.",
+        "wordCount": 46,
+        "blocks": {
+          "source": "Vi que a Morada Nobre tem 120 imóveis no ZAP",
+          "verifiableFact": "120 imóveis no ZAP direcionando pro WhatsApp",
+          "implication": "Lead de portal esfria rápido enquanto o corretor está em visita.",
+          "cta": "Faz sentido te mandar em 2 linhas como filtrar automaticamente? Se não fizer, me avisa."
+        }
+      },
+      "complianceRules": {
+        "creci": "Identificação clara da empresa e respeito aos dados públicos imobiliários.",
+        "lgpd": "Comunicação B2B legítima com opção de exclusão imediata."
+      }
+    },
+    {
+      "id": "lead-andre-adv",
+      "name": "Dr. André Vasconcelos",
+      "company": "Vasconcelos Advocacia Empresarial",
+      "role": "Sócio Administrador / Gestor do Escritório",
+      "niche": "advocacia",
+      "tier": "A",
+      "publicSources": {
+        "oabProfile": {
+          "oabNumber": "OAB/SP 234.567",
+          "receptiveOnly": true,
+          "verifiedTrigger": "Site direciona tudo pro WhatsApp; fecha às 18h; foco exclusivo em atendimento receptivo"
+        },
+        "website": {
+          "hasOnlineBooking": false,
+          "whatsappDirect": true
+        },
+        "googleProfile": {
+          "rating": 4.8,
+          "reviewCount": 42,
+          "closingTime": "18:00"
+        }
+      },
+      "mysteryShoppingResult": {
+        "testQuestion": "Boa tarde! O escritório realiza análise de contratos de prestação de serviços B2B?",
+        "measuredResponseTimeMinutes": 130,
+        "testedAt": "2026-10-22T16:10:00Z",
+        "miniDiagnostic3Lines": [
+          "1) Canal único de WhatsApp concentrando dúvidas de novos clientes e andamentos de processos",
+          "2) Advogados gastam em média 35% do dia em triagem receptiva repetitiva",
+          "3) Atendimento encerra às 18h sem triagem estruturada para contatos após o expediente"
+        ],
+        "frequentQuestionsList": [
+          "Como está o andamento do meu processo número X?",
+          "Vocês atendem demandas na área empresarial ou trabalhista?",
+          "Como faço para agendar uma consulta inicial com o Dr. André?",
+          "Quais documentos preciso enviar para a análise preliminar?",
+          "Qual o horário de atendimento presencial no escritório?"
+        ],
+        "transparencyNotice": "Verificação e diagnóstico gratuito de fluxo de triagem receptiva em conformidade com o Provimento 205/2021 da OAB."
+      },
+      "canonicalApproach": {
+        "bubble1": "Oi, Dr. André! Kethely da KethyTech em SP. Peguei seu contato no site do escritório, que direciona pro WhatsApp até as 18h.",
+        "bubble2": "Boa parte do dia vai em triagem e 'como está meu processo?'. Posso mandar em 2 linhas como organizar no receptivo? Se não for prioridade, me avisa.",
+        "splitText": "Oi, Dr. André! Kethely da KethyTech em SP. Peguei seu contato no site do escritório, que direciona pro WhatsApp até as 18h.---SPLIT---Boa parte do dia vai em triagem e 'como está meu processo?'. Posso mandar em 2 linhas como organizar no receptivo? Se não for prioridade, me avisa.",
+        "wordCount": 50,
+        "blocks": {
+          "source": "Peguei seu contato no site do escritório",
+          "verifiableFact": "direciona pro WhatsApp até as 18h",
+          "implication": "Boa parte do dia vai em triagem e 'como está meu processo?'.",
+          "cta": "Posso mandar em 2 linhas como organizar no receptivo? Se não for prioridade, me avisa."
+        }
+      },
+      "complianceRules": {
+        "oabProvimento205": "Exclusividade de triagem receptiva e organização interna. ESTRITAMENTE PROIBIDA captação ativa ou promessa de ganhos.",
+        "lgpd": "Dados coletados de canal público institucional com direito de recusa imediato."
+      }
+    },
+    {
+      "id": "lead-ricardo-log",
+      "name": "Ricardo Antunes",
+      "company": "TransRápido Logística & Cargas",
+      "role": "Gerente Operacional / SAC",
+      "niche": "logistica",
+      "tier": "B",
+      "publicSources": {
+        "jobPostings": {
+          "hiringSAC": true,
+          "roles": ["Atendente de SAC WhatsApp", "Assistente de Rastreio de Cargas"],
+          "verifiedTrigger": "Vaga aberta de atendente de SAC no Indeed/Catho"
+        },
+        "reclameAqui": {
+          "complaintsTopic": "Demora no retorno de rastreio de carga",
+          "responseTimeSAC": "Média de 36 horas",
+          "verifiedTrigger": "Reclamações públicas sobre 'cadê minha entrega' acumulando no WhatsApp"
+        },
+        "googleProfile": {
+          "rating": 3.4,
+          "reviewCount": 65
+        }
+      },
+      "mysteryShoppingResult": {
+        "testQuestion": "Boa tarde, qual o canal para consultar prazo de entrega com número de nota fiscal?",
+        "measuredResponseTimeMinutes": 220,
+        "testedAt": "2026-10-25T11:20:00Z",
+        "miniDiagnostic3Lines": [
+          "1) Vaga recente aberta para SAC indicando sobrecarga de atendimento manual",
+          "2) Reclame Aqui com chamados recorrentes sobre falta de atualização de rastreio",
+          "3) Mais de 60% dos contatos no WhatsApp são perguntas idênticas de status de entrega"
+        ],
+        "frequentQuestionsList": [
+          "Onde está minha mercadoria / nota fiscal número X?",
+          "Qual a previsão de entrega para o CEP informado?",
+          "O motorista já saiu para entrega hoje?",
+          "Como solicito comprovante de entrega assinado pelo destinatário?",
+          "Qual o procedimento em caso de mercadoria avariada ou extraviada?"
+        ],
+        "transparencyNotice": "Checagem de tempo de resposta pública e levantamento de gargalos de SAC como diagnóstico operacional gratuito."
+      },
+      "canonicalApproach": {
+        "bubble1": "Oi, Ricardo! Kethely da KethyTech em SP. Vi a vaga aberta de SAC e reclamações no Reclame Aqui sobre prazo de rastreio.",
+        "bubble2": "O 'cadê minha entrega' costuma travar o WhatsApp. Posso mandar em 2 linhas como automatizar o status da nota? Se não for foco agora, me avisa.",
+        "splitText": "Oi, Ricardo! Kethely da KethyTech em SP. Vi a vaga aberta de SAC e reclamações no Reclame Aqui sobre prazo de rastreio.---SPLIT---O 'cadê minha entrega' costuma travar o WhatsApp. Posso mandar em 2 linhas como automatizar o status da nota? Se não for foco agora, me avisa.",
+        "wordCount": 49,
+        "blocks": {
+          "source": "Vi a vaga aberta de SAC e reclamações no Reclame Aqui",
+          "verifiableFact": "vaga aberta de SAC e reclamações no Reclame Aqui sobre prazo de rastreio",
+          "implication": "O 'cadê minha entrega' costuma travar o WhatsApp.",
+          "cta": "Posso mandar em 2 linhas como automatizar o status da nota? Se não for foco agora, me avisa."
+        }
+      },
+      "complianceRules": {
+        "lgpd": "Abordagem corporativa transparente focada em eficiência operacional com opção de cancelamento imediato."
+      }
+    },
+    {
+      "id": "lead-camila-meta",
+      "name": "Camila Duarte",
+      "company": "Instituto Camila Duarte Estética Avançada",
+      "role": "Gestora de Clínica de Estética",
+      "niche": "dermatologia",
+      "tier": "A",
+      "publicSources": {
+        "metaAds": {
+          "hasActiveAds": true,
+          "clickToWhatsApp": true,
+          "verifiedTrigger": "Anúncios ativos de botox na Biblioteca de Anúncios levando direto pro WhatsApp"
+        },
+        "website": {
+          "hasOnlineBooking": false,
+          "whatsappDirect": true
+        }
+      },
+      "mysteryShoppingResult": {
+        "testQuestion": "Olá! Vi o anúncio de vocês no Instagram, vocês têm horário para avaliação essa semana?",
+        "measuredResponseTimeMinutes": 180,
+        "testedAt": "2026-10-26T10:15:00Z",
+        "miniDiagnostic3Lines": [
+          "1) Investimento em Meta Ads levando tráfego direto para atendimento humano",
+          "2) Espera média de 3 horas reduz taxa de conversão do lead pago",
+          "3) Ausência de qualificação automática de procedimento de interesse"
+        ],
+        "frequentQuestionsList": [
+          "Qual o valor do botox na testa e glabela?",
+          "Tem vaga para atendimento nesta semana?",
+          "Aceitam cartão de crédito parcelado?",
+          "Onde fica localizada a clínica?",
+          "Quem realiza a aplicação dos injetáveis?"
+        ],
+        "transparencyNotice": "Diagnóstico de retorno de tráfego pago gerado a partir de anúncio público ativo na Meta."
+      },
+      "canonicalApproach": {
+        "bubble1": "Oi, Camila! Sou a Kethely, da KethyTech em SP. Vi na Biblioteca de Anúncios que vocês têm anúncios de botox ativos pro WhatsApp.",
+        "bubble2": "Quando o lead pago espera, ele esfria rápido. Faz sentido te mandar em 2 linhas como responder em segundos? Se não for o momento, é só falar.",
+        "splitText": "Oi, Camila! Sou a Kethely, da KethyTech em SP. Vi na Biblioteca de Anúncios que vocês têm anúncios de botox ativos pro WhatsApp.---SPLIT---Quando o lead pago espera, ele esfria rápido. Faz sentido te mandar em 2 linhas como responder em segundos? Se não for o momento, é só falar.",
+        "wordCount": 49,
+        "blocks": {
+          "source": "Vi na Biblioteca de Anúncios",
+          "verifiableFact": "anúncios de botox ativos pro WhatsApp",
+          "implication": "Quando o lead pago espera, ele esfria rápido.",
+          "cta": "Faz sentido te mandar em 2 linhas como responder em segundos? Se não for o momento, é só falar."
+        }
+      },
+      "complianceRules": {
+        "cfm": "Sem promessas enganosas, foco exclusivo em tempo de atendimento ao paciente.",
+        "lgpd": "Contato originado de canal de tráfego público comercial."
+      }
+    },
+    {
+      "id": "lead-fernanda-diag",
+      "name": "Dra. Fernanda Prado",
+      "company": "Centro Integrado de Saúde & Diagnóstico",
+      "role": "Diretora Clínica & Médica",
+      "niche": "dermatologia",
+      "tier": "A",
+      "publicSources": {
+        "doctoralia": {
+          "verified": true,
+          "onlineSchedule": false,
+          "crmOrCro": "CRM 155.678-SP",
+          "rqe": "RQE 81.234"
+        },
+        "googleProfile": {
+          "rating": 4.0,
+          "reviewCount": 94,
+          "closingTime": "18:00",
+          "verifiedTrigger": "Sem agenda online, fecha às 18h e avaliações apontando demora de retorno"
+        }
+      },
+      "mysteryShoppingResult": {
+        "testQuestion": "Boa tarde, vocês têm atendimento dermatológico pediátrico?",
+        "measuredResponseTimeMinutes": 310,
+        "testedAt": "2026-10-27T09:30:00Z",
+        "miniDiagnostic3Lines": [
+          "1) Doctoralia sem agenda online ativa",
+          "2) Recepção encerra às 18h perdendo pacientes noturnos",
+          "3) Avaliações no Google citando demora no retorno do WhatsApp"
+        ],
+        "frequentQuestionsList": [
+          "Vocês atendem crianças / dermato pediátrica?",
+          "Aceita convênio Bradesco Saúde?",
+          "Qual o valor da consulta particular?",
+          "Tem estacionamento no local?",
+          "Tem horário disponível para amanhã?"
+        ],
+        "transparencyNotice": "Diagnóstico de 3 linhas elaborado a partir de checagem pública no Google e Doctoralia."
+      },
+      "canonicalApproach": {
+        "bubble1": "Oi, Dra. Fernanda! Kethely da KethyTech em SP. Achei a clínica no Doctoralia e vi no Google avaliações sobre demora no WhatsApp.",
+        "bubble2": "Sem agenda online e fechando às 18h, pacientes se perdem. Posso mandar o mini diagnóstico em 3 linhas? Se não for prioridade, é só me dizer.",
+        "splitText": "Oi, Dra. Fernanda! Kethely da KethyTech em SP. Achei a clínica no Doctoralia e vi no Google avaliações sobre demora no WhatsApp.---SPLIT---Sem agenda online e fechando às 18h, pacientes se perdem. Posso mandar o mini diagnóstico em 3 linhas? Se não for prioridade, é só me dizer.",
+        "wordCount": 49,
+        "blocks": {
+          "source": "Achei a clínica no Doctoralia e vi no Google",
+          "verifiableFact": "avaliações sobre demora no WhatsApp e fecha às 18h",
+          "implication": "Sem agenda online e fechando às 18h, pacientes se perdem.",
+          "cta": "Posso mandar o mini diagnóstico em 3 linhas? Se não for prioridade, é só me dizer."
+        }
+      },
+      "complianceRules": {
+        "cfm2336": "Estritamente profissional e ético, sem garantias de resultado.",
+        "lgpd": "Opt-out respeitado com exclusão imediata se manifestado."
+      }
+    },
+    {
+      "id": "lead-juliana-corretora",
+      "name": "Juliana Peixoto",
+      "company": "Juliana Imóveis Exclusivos",
+      "role": "Corretora Autônoma de Alto Padrão",
+      "niche": "imobiliaria",
+      "tier": "C",
+      "publicSources": {
+        "instagram": {
+          "activePosts": true,
+          "unansweredComments": false,
+          "verifiedTrigger": "Link da bio direto pro WhatsApp, posta imóveis diariamente no feed e stories"
+        },
+        "realEstatePortals": {
+          "creci": "CRECI 198.456-F",
+          "activeListingsCount": 15
+        }
+      },
+      "mysteryShoppingResult": {
+        "testQuestion": "Olá Juliana! O imóvel da cobertura dos Jardins postado ontem ainda aceita proposta?",
+        "measuredResponseTimeMinutes": 140,
+        "testedAt": "2026-10-28T17:15:00Z",
+        "miniDiagnostic3Lines": [
+          "1) Link da bio do Instagram concentrando contatos dispersos",
+          "2) Corretora em visita externa sem tempo de filtrar curiosos",
+          "3) Falta de qualificação imediata de orçamento e capacidade de compra"
+        ],
+        "frequentQuestionsList": [
+          "Qual o valor do condomínio e IPTU desse imóvel da foto?",
+          "Aceita permuta por apartamento menor em Moema?",
+          "Ainda está disponível para visita neste fim de semana?",
+          "Pode me mandar o vídeo tour completo pelo WhatsApp?",
+          "Você trabalha também com locação ou só venda?"
+        ],
+        "transparencyNotice": "Análise e diagnóstico gratuito de atendimento em canal público da bio para aumento de produtividade individual."
+      },
+      "canonicalApproach": {
+        "bubble1": "Oi, Juliana! Kethely da KethyTech em SP. Vi no seu Instagram profissional que o link da bio vai direto pro WhatsApp.",
+        "bubble2": "Responder todo mundo durante as visitas consome tempo. Posso te mandar em 2 linhas como filtrar curiosos no automático? Se não fizer sentido, tranquilo.",
+        "splitText": "Oi, Juliana! Kethely da KethyTech em SP. Vi no seu Instagram profissional que o link da bio vai direto pro WhatsApp.---SPLIT---Responder todo mundo durante as visitas consome tempo. Posso te mandar em 2 linhas como filtrar curiosos no automático? Se não fizer sentido, tranquilo.",
+        "wordCount": 45,
+        "blocks": {
+          "source": "Vi no seu Instagram profissional",
+          "verifiableFact": "link da bio vai direto pro WhatsApp e posta imóveis diariamente",
+          "implication": "Responder todo mundo durante as visitas consome tempo.",
+          "cta": "Posso te mandar em 2 linhas como filtrar curiosos no automático? Se não fizer sentido, tranquilo."
+        }
+      },
+      "complianceRules": {
+        "creci": "Respeito ao exercício profissional da corretagem.",
+        "lgpd": "Canal profissional público com opção de opt-out desimpedido."
+      }
+    }
+  ]
+}

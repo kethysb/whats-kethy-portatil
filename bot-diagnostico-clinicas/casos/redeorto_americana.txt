@@ -1,0 +1,43 @@
+[LEAD]
+clinica: Redeorto Americana
+cidade: Americana
+origem_contato: ficha do Google
+decisor:
+link_maps: https://maps.app.goo.gl/mfvGCoEDRDp46jx1A
+coletado_em: 2026-11-08 22:30 (domingo à noite)
+
+[GOOGLE]
+Redeorto Americana
+5.0
+(167)
+Dental clinic
+Book online => https://api.whatsapp.com/send/?phone=%2B5519971616392
+Av. de Cillo, 34 - Vila Pavan, Americana - SP, 13465-100
+Closed · Opens 8:30 AM Mon
+(19) 3461-2172
+Add website
+Sunday Closed
+Monday 8:30 AM–6 PM
+Tuesday 8:30 AM–6:30 PM
+Wednesday 8:30 AM–6 PM
+Thursday 8:30 AM–6:30 PM
+Friday 8:30 AM–6 PM
+Saturday 8:30 AM–1 PM
+
+[AVALIACOES]
+(ordenadas por mais recentes; 10 primeiras)
+5 stars · 2 weeks ago · (sem texto) · Response from the owner 3 days ago
+5 stars · a month ago · "Faz tempo que somos clientes do cartão de Todos e estamos mt felizes com o atendimento. Minha mãe descobriu um tumor na mama, e no mesmo dia, conseguiu realizar o exame solicitado pelo médico, Dr. Diego." · Response from the owner 3 days ago
+5 stars · 6 months ago · "Quebrei um dente, procurei a clínica, para avaliação e tratamento, fui muito bem atendida na recepção pela Jéssica" · Response from the owner a month ago
+5 stars · 6 months ago · "Atendimento maravilhoso, respeito, carinho" · Response from the owner a month ago
+5 stars · 6 months ago · "Desde da recepção ate chegar ao dentista o atendimento foi muito bom" · Response from the owner a month ago
+5 stars · a year ago · "A Jéssica sempre muito educada e pró ativa nos atendimentos online e presencial tbm" · Response from the owner a month ago
+5 stars · a year ago · (sem texto) · Response from the owner a year ago
+5 stars · a year ago · "Amei o trabalho da Erika, muito atenciosa, caprichosa" · Response from the owner a year ago
+5 stars · a year ago · (sem texto) · Response from the owner a year ago
+5 stars · a year ago · "Ainda não fui mas já agendei resposta muito rápida! Não te deixam esperando pra responder muito educada a pessoa no watts parabéns a clínica" · Response from the owner a year ago
+
+[INSTAGRAM]
+REDEORTO Americana (@redeortoamericana) · 1.2K+ followers · 1.3K+ posts · Referência em ORTODONTIA e IMPLANTES R.T.: Dra. Érica Vanzo | CROSP CL: 18829
+Post mais recente encontrado: "Fim de ano chegando, fotos, encontros e aquela vontade de sorrir com ainda mais confiança!" · 4 days ago
+Observação: Redeorto é uma rede de franquias odontológicas (@redeorto, "A maior Rede de Franquias Odontológicas do Brasil").

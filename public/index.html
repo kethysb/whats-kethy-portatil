@@ -1,0 +1,885 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whats Kethy - Painel Inteligente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0b141a;
+      --bg-panel: #111b21;
+      --bg-panel-light: #202c33;
+      --bg-chat: #0c1317;
+      --bubble-out: #005c4b;
+      --bubble-in: #202c33;
+      --text-main: #e9edef;
+      --text-muted: #8696a0;
+      --accent: #00a884;
+      --accent-hover: #029071;
+      --danger: #f15c6d;
+      --warning: #f7a738;
+      --border: #222e35;
+      --card: #182229;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    header {
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .brand .badge-tag {
+      background: rgba(0, 168, 132, 0.15);
+      color: var(--accent);
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+      border: 1px solid rgba(0, 168, 132, 0.3);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: var(--bg-panel-light);
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #777;
+    }
+
+    .status-dot.online { background: #00e676; box-shadow: 0 0 10px #00e676; }
+    .status-dot.waiting { background: #ffd600; box-shadow: 0 0 10px #ffd600; }
+
+    .btn {
+      background: var(--accent);
+      color: #111;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--accent-hover);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: var(--bg-panel-light);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #2a3942;
+    }
+
+    .btn-magic {
+      background: linear-gradient(135deg, #8b5cf6, #ec4899);
+      color: white;
+      border: none;
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+    }
+
+    .btn-magic:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    /* Container Principal */
+    .main-container {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Tela de Conexão com QR Code */
+    #connection-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, #111b21 0%, #080d10 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+    }
+
+    .qr-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      width: 480px;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .qr-card h2 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .qr-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .qr-box {
+      background: white;
+      padding: 16px;
+      border-radius: 12px;
+      display: inline-block;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .qr-box img {
+      width: 250px;
+      height: 250px;
+      display: block;
+    }
+
+    .pairing-box {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid var(--border);
+    }
+
+    .pairing-box input {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      width: 70%;
+      margin-right: 8px;
+    }
+
+    /* Layout do Chat */
+    .sidebar {
+      width: 380px;
+      background: var(--bg-panel);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-panel);
+    }
+
+    .tab {
+      flex: 1;
+      padding: 12px;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .tab .badge {
+      background: var(--danger);
+      color: white;
+      font-size: 0.7rem;
+      padding: 2px 7px;
+      border-radius: 12px;
+    }
+
+    .chat-list {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .chat-item {
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .chat-item:hover {
+      background: var(--bg-panel-light);
+    }
+
+    .chat-item.active {
+      background: #2a3942;
+    }
+
+    .chat-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #374151;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .chat-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .chat-header-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .chat-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .chat-time {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .chat-preview-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chat-preview {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .needs-reply-tag {
+      background: rgba(241, 92, 109, 0.2);
+      color: var(--danger);
+      border: 1px solid rgba(241, 92, 109, 0.4);
+      font-size: 0.68rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    /* Área de Chat */
+    .chat-view {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-chat);
+    }
+
+    .chat-view-header {
+      padding: 12px 20px;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chat-view-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    .msg-bubble {
+      max-width: 65%;
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      position: relative;
+    }
+
+    .msg-in {
+      align-self: flex-start;
+      background: var(--bubble-in);
+      border-top-left-radius: 2px;
+    }
+
+    .msg-out {
+      align-self: flex-end;
+      background: var(--bubble-out);
+      border-top-right-radius: 2px;
+    }
+
+    .msg-meta {
+      display: flex;
+      justify-content: flex-end;
+      gap: 4px;
+      font-size: 0.68rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 4px;
+    }
+
+    .msg-media-img {
+      max-width: 280px;
+      border-radius: 8px;
+      display: block;
+      margin-bottom: 6px;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .msg-ai-box {
+      background: rgba(0, 0, 0, 0.25);
+      border-left: 3px solid #8b5cf6;
+      padding: 6px 10px;
+      border-radius: 4px;
+      margin-top: 6px;
+      font-size: 0.8rem;
+    }
+
+    .chat-input-bar {
+      padding: 12px 20px;
+      background: var(--bg-panel);
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .chat-input-bar input {
+      flex: 1;
+      background: var(--bg-panel-light);
+      border: 1px solid var(--border);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      outline: none;
+    }
+
+    /* Modal de Pendências IA */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      width: 700px;
+      max-width: 92%;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-body {
+      padding: 24px;
+      overflow-y: auto;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      white-space: pre-line;
+      color: #d1d5db;
+    }
+
+    .modal-body h2, .modal-body h3 {
+      color: white;
+      margin: 16px 0 8px 0;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .close-btn:hover { color: white; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <span style="font-size: 1.6rem;">💚</span>
+      <div>
+        <h1>Whats Kethy</h1>
+        <div style="font-size: 0.72rem; color: var(--text-muted);">Sessão Isolada & Agente IA de Produtividade</div>
+      </div>
+      <span class="badge-tag">Porta 3333</span>
+    </div>
+
+    <div class="header-actions">
+      <div id="statusBadge" class="status-badge">
+        <div id="statusDot" class="status-dot"></div>
+        <span id="statusText">Verificando...</span>
+      </div>
+
+      <button id="btnAnalyze" class="btn btn-magic" onclick="analyzePendingTasks()">
+        ✨ O que preciso fazer hoje? (IA)
+      </button>
+
+      <button id="btnToggleAuto" class="btn btn-secondary" onclick="toggleAutoReply()">
+        🤖 Auto-Resposta: <span id="autoReplyText">OFF</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- CONTAINER -->
+  <div class="main-container">
+
+    <!-- TELA DE QR CODE (se desconectado) -->
+    <div id="connection-screen" style="display: none;">
+      <div class="qr-card">
+        <h2>Conectar WhatsApp da Kethely</h2>
+        <p>Abra o WhatsApp no celular > Aparelhos Conectados > Conectar Aparelho</p>
+
+        <div class="qr-box">
+          <img id="qrImage" src="" alt="Carregando QR Code...">
+        </div>
+
+        <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">
+          O QR Code atualiza automaticamente se expirar.
+        </div>
+
+        <div class="pairing-box">
+          <p style="font-size: 0.82rem; margin-bottom: 8px;">Ou conecte sem câmera (código de 8 dígitos):</p>
+          <div style="display: flex; justify-content: center;">
+            <input type="text" id="phoneInput" placeholder="Ex: 5511999998888">
+            <button class="btn" onclick="requestPairingCode()">Gerar Código</button>
+          </div>
+          <div id="pairingCodeResult" style="margin-top: 10px; font-weight: bold; color: var(--accent); font-size: 1.1rem;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR DE CONVERSAS -->
+    <div class="sidebar">
+      <div class="tabs">
+        <div id="tabAll" class="tab active" onclick="switchTab('all')">
+          Todas (<span id="countAll">0</span>)
+        </div>
+        <div id="tabUnreplied" class="tab" onclick="switchTab('unreplied')">
+          🚨 Não Respondidas <span id="countUnreplied" class="badge">0</span>
+        </div>
+      </div>
+
+      <div id="chatList" class="chat-list">
+        <!-- Itens injetados via JS -->
+      </div>
+    </div>
+
+    <!-- ÁREA DE MENSAGENS -->
+    <div class="chat-view">
+      <div class="chat-view-header">
+        <div>
+          <div id="activeChatName" style="font-weight: 600; font-size: 1.05rem;">Selecione uma conversa</div>
+          <div id="activeChatJid" style="font-size: 0.75rem; color: var(--text-muted);"></div>
+        </div>
+
+        <div id="chatActions" style="display: none; gap: 8px;">
+          <button class="btn btn-secondary" onclick="suggestReply()">💡 Sugerir Resposta IA</button>
+        </div>
+      </div>
+
+      <div id="chatMessages" class="chat-view-body">
+        <div style="text-align: center; color: var(--text-muted); margin-top: 100px;">
+          💬 Nenhuma conversa selecionada.<br>Clique em um contato ao lado para ver o histórico e mídias.
+        </div>
+      </div>
+
+      <div class="chat-input-bar">
+        <input type="text" id="msgInput" placeholder="Digite uma resposta para enviar..." onkeypress="handleKey(event)">
+        <button class="btn" onclick="sendCurrentMessage()">Enviar 🚀</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MODAL DE TAREFAS DA IA -->
+  <div id="aiModal" class="modal-backdrop">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="display: flex; align-items: center; gap: 8px;">
+          ✨ Plano de Ação da Kethely (Gerado por IA)
+        </h3>
+        <button class="close-btn" onclick="closeAiModal()">&times;</button>
+      </div>
+      <div id="aiModalContent" class="modal-body">
+        Analisando pendências no WhatsApp...
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let isConnected = false;
+    let currentTab = 'all';
+    let currentChatJid = null;
+    let chatsData = [];
+
+    async function checkStatus() {
+      try {
+        const res = await fetch('/api/status');
+        const data = await res.json();
+        
+        isConnected = data.connected;
+        const screen = document.getElementById('connection-screen');
+        const statusDot = document.getElementById('statusDot');
+        const statusText = document.getElementById('statusText');
+        const autoText = document.getElementById('autoReplyText');
+
+        autoText.innerText = data.autoReply ? 'ON' : 'OFF';
+
+        if (data.connected) {
+          screen.style.display = 'none';
+          statusDot.className = 'status-dot online';
+          statusText.innerText = `Conectado: ${data.userName || 'Kethely'}`;
+        } else {
+          screen.style.display = 'flex';
+          statusDot.className = 'status-dot waiting';
+          statusText.innerText = 'Aguardando Conexão';
+
+          if (data.qrCodeDataUrl) {
+            document.getElementById('qrImage').src = data.qrCodeDataUrl;
+          }
+        }
+
+        document.getElementById('countUnreplied').innerText = data.unrepliedCount || 0;
+        document.getElementById('countAll').innerText = data.totalChats || 0;
+
+      } catch (err) {
+        console.error('Erro ao buscar status:', err);
+      }
+    }
+
+    async function loadChats() {
+      try {
+        const url = currentTab === 'unreplied' ? '/api/chats/unreplied' : '/api/chats';
+        const res = await fetch(url);
+        chatsData = await res.json();
+        renderChatList();
+      } catch (err) {
+        console.error('Erro ao carregar chats:', err);
+      }
+    }
+
+    function renderChatList() {
+      const list = document.getElementById('chatList');
+      if (chatsData.length === 0) {
+        list.innerHTML = `<div style="padding: 24px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+          Nenhuma conversa nesta categoria.
+        </div>`;
+        return;
+      }
+
+      list.innerHTML = chatsData.map(c => {
+        const initial = (c.name || 'C')[0].toUpperCase();
+        const time = new Date(c.lastTimestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const isActive = c.jid === currentChatJid ? 'active' : '';
+
+        return `
+          <div class="chat-item ${isActive}" onclick="selectChat('${c.jid}')">
+            <div class="chat-avatar">${initial}</div>
+            <div class="chat-info">
+              <div class="chat-header-row">
+                <span class="chat-name">${c.name || c.jid}</span>
+                <span class="chat-time">${time}</span>
+              </div>
+              <div class="chat-preview-row">
+                <span class="chat-preview">${c.lastMessage || 'Sem mensagem'}</span>
+                ${c.needsReply ? '<span class="needs-reply-tag">Não respondida</span>' : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function selectChat(jid) {
+      currentChatJid = jid;
+      renderChatList();
+
+      document.getElementById('chatActions').style.display = 'flex';
+      try {
+        const res = await fetch(`/api/chats/${encodeURIComponent(jid)}`);
+        const chat = await res.json();
+
+        document.getElementById('activeChatName').innerText = chat.name || chat.jid;
+        document.getElementById('activeChatJid').innerText = chat.jid;
+
+        const body = document.getElementById('chatMessages');
+        if (!chat.messages || chat.messages.length === 0) {
+          body.innerHTML = '<div style="text-align: center; color: var(--text-muted); margin-top: 50px;">Nenhuma mensagem registrada neste chat.</div>';
+          return;
+        }
+
+        body.innerHTML = chat.messages.map(m => {
+          const sideClass = m.fromMe ? 'msg-out' : 'msg-in';
+          const time = new Date(m.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+          let mediaHtml = '';
+          if (m.mediaType === 'image' && m.mediaUrl) {
+            mediaHtml = `
+              <div>
+                <img src="${m.mediaUrl}" class="msg-media-img" onclick="window.open('${m.mediaUrl}', '_blank')" title="Clique para ampliar">
+                ${m.analysis ? `<div class="msg-ai-box">🔍 <b>Análise da IA:</b> ${m.analysis}</div>` : ''}
+              </div>
+            `;
+          } else if (m.mediaType === 'audio' && m.mediaUrl) {
+            mediaHtml = `
+              <div style="margin-bottom: 6px;">
+                <audio controls src="${m.mediaUrl}" style="max-width: 260px; height: 36px;"></audio>
+                ${m.transcription ? `<div class="msg-ai-box">🎙️ <b>Transcrição:</b> "${m.transcription}"</div>` : ''}
+              </div>
+            `;
+          }
+
+          return `
+            <div class="msg-bubble ${sideClass}">
+              ${mediaHtml}
+              <div>${m.text}</div>
+              <div class="msg-meta">
+                <span>${time}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        body.scrollTop = body.scrollHeight;
+
+      } catch (err) {
+        console.error('Erro ao abrir chat:', err);
+      }
+    }
+
+    async function sendCurrentMessage() {
+      if (!currentChatJid) return alert('Selecione uma conversa primeiro!');
+      const input = document.getElementById('msgInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      input.value = '';
+      try {
+        await fetch(`/api/chats/${encodeURIComponent(currentChatJid)}/send`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text })
+        });
+        await selectChat(currentChatJid);
+        await loadChats();
+      } catch (err) {
+        alert('Erro ao enviar mensagem: ' + err.message);
+      }
+    }
+
+    function handleKey(e) {
+      if (e.key === 'Enter') sendCurrentMessage();
+    }
+
+    async function suggestReply() {
+      if (!currentChatJid) return;
+      const input = document.getElementById('msgInput');
+      input.placeholder = 'Gerando sugestão de resposta com IA...';
+      try {
+        const res = await fetch('/api/ai/suggest-reply', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ jid: currentChatJid })
+        });
+        const data = await res.json();
+        if (data.suggestion) {
+          input.value = data.suggestion;
+          input.focus();
+        }
+      } catch (err) {
+        alert('Erro ao sugerir resposta: ' + err.message);
+      } finally {
+        input.placeholder = 'Digite uma resposta para enviar...';
+      }
+    }
+
+    async function analyzePendingTasks() {
+      const modal = document.getElementById('aiModal');
+      const content = document.getElementById('aiModalContent');
+      modal.classList.add('open');
+      content.innerHTML = '<div style="text-align: center; padding: 40px;">⏳ <b>Lendo conversas não respondidas e montando seu plano de ação...</b><br><br>Aguarde alguns instantes.</div>';
+
+      try {
+        const res = await fetch('/api/ai/analyze-pending', { method: 'POST' });
+        const data = await res.json();
+        content.innerText = data.analysis || 'Nenhuma tarefa identificada.';
+      } catch (err) {
+        content.innerText = 'Erro ao analisar pendências: ' + err.message;
+      }
+    }
+
+    function closeAiModal() {
+      document.getElementById('aiModal').classList.remove('open');
+    }
+
+    async function toggleAutoReply() {
+      try {
+        const res = await fetch('/api/ai/toggle-auto-reply', { method: 'POST' });
+        const data = await res.json();
+        document.getElementById('autoReplyText').innerText = data.autoReply ? 'ON' : 'OFF';
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    async function requestPairingCode() {
+      const phone = document.getElementById('phoneInput').value.trim();
+      if (!phone) return alert('Digite o número com DDD (ex: 5511999998888)');
+
+      const resDiv = document.getElementById('pairingCodeResult');
+      resDiv.innerText = 'Solicitando código ao WhatsApp...';
+
+      try {
+        const res = await fetch('/api/pairing-code', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phone })
+        });
+        const data = await res.json();
+        if (data.code) {
+          resDiv.innerHTML = `Código de Pareamento: <span style="font-size: 1.4rem; letter-spacing: 2px; color: #00e676;">${data.code}</span><br><span style="font-size: 0.8rem; font-weight: normal; color: #fff;">Digite este código no celular em "Aparelhos Conectados > Conectar com número de telefone".</span>`;
+        } else {
+          resDiv.innerText = 'Erro: ' + (data.error || 'Não foi possível gerar.');
+        }
+      } catch (err) {
+        resDiv.innerText = 'Erro: ' + err.message;
+      }
+    }
+
+    function switchTab(tab) {
+      currentTab = tab;
+      document.getElementById('tabAll').className = `tab ${tab === 'all' ? 'active' : ''}`;
+      document.getElementById('tabUnreplied').className = `tab ${tab === 'unreplied' ? 'active' : ''}`;
+      loadChats();
+    }
+
+    // Polling de sincronização a cada 3 segundos
+    setInterval(() => {
+      checkStatus();
+      loadChats();
+    }, 3500);
+
+    // Carga inicial
+    checkStatus();
+    loadChats();
+  </script>
+</body>
+</html>
